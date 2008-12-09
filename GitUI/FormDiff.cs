@@ -64,7 +64,7 @@ namespace GitUI
             From.DataSource = new GitCommands.GitCommands().GetHeads();
             
             To.DisplayMember = "Name";
-            To.DataSource = From.DataSource;
+            To.DataSource = new GitCommands.GitCommands().GetHeads();
         }
     }
 }
