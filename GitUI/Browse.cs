@@ -25,10 +25,11 @@ namespace GitUI
                 if (((GitItem)item).ItemType == "blob")
                 {
                     EditorOptions.SetSyntax(FileText, ((GitItem)item).FileName);
-                    FileText.Text = GitCommands.GitCommands.GetFileText(item.Guid);
+                    GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+                    FileText.Text = gitCommands.GetFileText(item.Guid);
                     FileText.Refresh();
 
-                    FileChanges.DataSource = GitCommands.GitCommands.GetFileChanges(((GitItem)item).FileName);
+                    FileChanges.DataSource = gitCommands.GetFileChanges(((GitItem)item).FileName);
                 }
 
 
@@ -77,9 +78,11 @@ namespace GitUI
             GitTree.Nodes.Clear();
 
             Branches.DisplayMember = "Name";
-            string selectedHead = GitCommands.GitCommands.GetSelectedBranch();
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            string selectedHead = gitCommands.GetSelectedBranch();
             CurrentBranch.Text = "Current branch: " + selectedHead;
-            List<GitHead> heads = GitCommands.GitCommands.GetHeads(false);
+            List<GitHead> heads = gitCommands.GetHeads(false);
             Branches.DataSource = heads;
             foreach (GitHead head in heads)
             {
@@ -96,7 +99,9 @@ namespace GitUI
 
         private void ShowRevisions()
         {
-            List<GitRevision> revisions = GitCommands.GitCommands.GitRevisions(Branches.Text);
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            List<GitRevision> revisions = gitCommands.GitRevisions(Branches.Text);
 
             if (revisions.Count > 0)
                 LoadInTreeSingle(revisions[0], GitTree.Nodes);
@@ -246,8 +251,10 @@ namespace GitUI
                     GitTree.Nodes.Clear();
                     LoadInTreeSingle(revision, GitTree.Nodes);
 
+                    GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
                     if (Revisions.SelectedRows.Count == 1)
-                        DiffFiles.DataSource = GitCommands.GitCommands.GetDiffFiles(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[0].DataBoundItem).ParentGuids[0]);
+                        DiffFiles.DataSource = gitCommands.GetDiffFiles(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[0].DataBoundItem).ParentGuids[0]);
                     //DiffFiles.DataSource = GitCommands.GitCommands.GetDiff(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[0].DataBoundItem).parentGuid);
                 }
 
@@ -256,8 +263,9 @@ namespace GitUI
                     if (Revisions.SelectedRows[0].DataBoundItem is GitRevision &&
                         Revisions.SelectedRows[1].DataBoundItem is GitRevision)
                     {
+                        GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
 
-                        DiffFiles.DataSource = GitCommands.GitCommands.GetDiffFiles(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[1].DataBoundItem).Guid);
+                        DiffFiles.DataSource = gitCommands.GetDiffFiles(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[1].DataBoundItem).Guid);
                         //DiffFiles.DataSource = GitCommands.GitCommands.GetDiff(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[1].DataBoundItem).Guid);
 
                     }
@@ -305,7 +313,9 @@ namespace GitUI
             {
                 IGitItem revision = (IGitItem)FileChanges.SelectedRows[0].DataBoundItem;
 
-                FileText.Text = GitCommands.GitCommands.GetFileText(revision.Guid);
+                GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+                FileText.Text = gitCommands.GetFileText(revision.Guid);
                 FileText.Refresh();
             }
         }
@@ -419,7 +429,9 @@ namespace GitUI
             else
             if (DiffFiles.SelectedItem is string)
             {
-                Patch selectedPatch = GitCommands.GitCommands.GetSingleDiff(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[0].DataBoundItem).ParentGuids[0], (string)DiffFiles.SelectedItem);
+                GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+                Patch selectedPatch = gitCommands.GetSingleDiff(((GitRevision)Revisions.SelectedRows[0].DataBoundItem).Guid, ((GitRevision)Revisions.SelectedRows[0].DataBoundItem).ParentGuids[0], (string)DiffFiles.SelectedItem);
                 if (selectedPatch != null)
                 {
                     EditorOptions.SetSyntax(DiffText, selectedPatch.FileNameB);
@@ -459,13 +471,24 @@ namespace GitUI
 
         private void gitBashToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.RunBash();
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            gitCommands.RunBash();
 
         }
 
         private void gitGUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.RunGui();
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            gitCommands.RunGui();
+        }
+
+        private void visualizeBranchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            gitCommands.RunGitK();
         }
 
 

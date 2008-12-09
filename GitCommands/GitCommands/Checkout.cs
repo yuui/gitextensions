@@ -26,7 +26,9 @@ namespace GitCommands
 
         public void Execute()
         {
-            Dto.Result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "checkout " + Dto.Name);
+            GitCommands gitCommands = new GitCommands();
+
+            Dto.Result = gitCommands.RunCmd(Settings.GitDir + "git.exe", "checkout " + Dto.Name);
         }
     }
 }

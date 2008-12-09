@@ -5,6 +5,7 @@ using System.Text;
 using System.Security.Permissions;
 using System.IO;
 using PatchApply;
+using System.Diagnostics;
 
 namespace GitCommands
 {
@@ -26,12 +27,12 @@ namespace GitCommands
             return startDir;
         }
 
-        public static string RunCmd(string cmd)
+        public string RunCmd(string cmd)
         {
             return RunCmd(cmd, "");
         }
 
-        public static void RunRealCmd(string cmd, string arguments)
+        public void RunRealCmd(string cmd, string arguments)
         {
             //process used to execute external commands
 
@@ -54,7 +55,7 @@ namespace GitCommands
             
         }
 
-        public static void RunRealCmdDetatched(string cmd, string arguments)
+        public void RunRealCmdDetatched(string cmd, string arguments)
         {
             //process used to execute external commands
 
@@ -76,7 +77,7 @@ namespace GitCommands
 
         }
 
-        public static void Run(string cmd, string arguments)
+        public void Run(string cmd, string arguments)
         {
             //process used to execute external commands
 
@@ -98,146 +99,224 @@ namespace GitCommands
             //process.WaitForExit();
 
         }
-
+        public System.Diagnostics.Process Process { get; set; }
 
         [PermissionSetAttribute(SecurityAction.Demand, Name = "FullTrust")]
-        public static string RunCmd(string cmd, string arguments)
+        public Process RunCmdAsync(string cmd, string arguments)
         {
             //process used to execute external commands
+            Process = new System.Diagnostics.Process();
+            Process.StartInfo.UseShellExecute = false;
+            Process.StartInfo.ErrorDialog = false;
+            Process.StartInfo.RedirectStandardOutput = true;
+            Process.StartInfo.RedirectStandardInput = true;
+            Process.StartInfo.RedirectStandardError = true;
 
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.ErrorDialog = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.RedirectStandardInput = true;
-            process.StartInfo.RedirectStandardError = true;
+            Process.StartInfo.CreateNoWindow = true;
+            Process.StartInfo.FileName = cmd;
+            Process.StartInfo.Arguments = arguments;
+            Process.StartInfo.WorkingDirectory = Settings.WorkingDir;
+            Process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+            Process.StartInfo.LoadUserProfile = true;
+            Process.EnableRaisingEvents = true;
 
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.FileName = cmd;
-            process.StartInfo.Arguments = arguments;
-            process.StartInfo.WorkingDirectory = Settings.WorkingDir;
-            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
-            process.StartInfo.LoadUserProfile = true;
+            Process.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(process_OutputDataReceived);
+            Process.ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler(process_ErrorDataReceived);
+            Output = "";
+            ErrorOutput = "";
 
-            process.Start();
+            Process.Exited += new EventHandler(process_Exited);
+            Process.Start();
 
-            string output;
-            string error;
-                
-            output = process.StandardOutput.ReadToEnd();
-            error = process.StandardError.ReadToEnd();
+            Process.StandardInput.Write("achttien\r");
 
-            process.WaitForExit();
-            process.Close();
-            // Read the output stream first and then wait. 
+            Process.BeginErrorReadLine();
+            Process.BeginOutputReadLine();
 
-            if (!string.IsNullOrEmpty(error))
-            {
-                output += "\n" + error;
-            }
-            
-            return output;
+            return Process;
         }
 
+        [PermissionSetAttribute(SecurityAction.Demand, Name = "FullTrust")]
+        public string RunCmd(string cmd, string arguments)
+        {
+            //process used to execute external commands
+            Process = new System.Diagnostics.Process();
+            Process.StartInfo.UseShellExecute = false;
+            Process.StartInfo.ErrorDialog = false;
+            Process.StartInfo.RedirectStandardOutput = true;
+            Process.StartInfo.RedirectStandardInput = true;
+            Process.StartInfo.RedirectStandardError = true;
 
-        static public void RunGui()
+            Process.StartInfo.CreateNoWindow = true;
+            Process.StartInfo.FileName = cmd;
+            Process.StartInfo.Arguments = arguments;
+            Process.StartInfo.WorkingDirectory = Settings.WorkingDir;
+            Process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+            Process.StartInfo.LoadUserProfile = true;
+
+            Process.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(process_OutputDataReceived);
+            Process.ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler(process_ErrorDataReceived);
+            Process.Exited += new EventHandler(process_Exited);
+
+            Output = "";
+            ErrorOutput = "";
+
+            Process.Start();
+
+            Process.BeginErrorReadLine();
+            Process.BeginOutputReadLine();
+
+
+            Process.WaitForExit();
+            Process.Close();
+            // Read the output stream first and then wait. 
+
+            if (!string.IsNullOrEmpty(ErrorOutput))
+            {
+                return Output + ErrorOutput;
+            }
+
+            return Output;
+        }
+
+        public string Output { get; set; }
+        public string ErrorOutput { get; set; }
+
+        public event DataReceivedEventHandler DataReceived;
+        public event EventHandler Exited;
+
+        void process_Exited(object sender, EventArgs e)
+        {
+            if (Exited != null)
+                Exited(this, e);
+        }
+
+        void process_ErrorDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
+        {
+            ErrorOutput += e.Data + "\n";
+            if (DataReceived != null)
+                DataReceived(this, e);
+        }
+
+        void process_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
+        {
+            Output += e.Data + "\n";
+            if (DataReceived != null)
+                DataReceived(this, e);
+        }
+
+        public Process CloneAsync(string source, string destination)
+        {
+            return RunCmdAsync(Settings.GitDir + "git.exe", "clone " + source + " " + destination);
+        }
+
+        public void RunGitK()
+        {
+            RunRealCmdDetatched("gitk", "");
+        }
+
+        public void RunGui()
         {
             Run(Settings.GitDir + "git.exe", "gui");
         }
 
 
-        static public void RunBash()
+        public void RunBash()
         {
             RunRealCmdDetatched("C:\\Windows\\System32\\cmd.exe", "/c \"" + Settings.GitDir + "sh.exe\" --login -i");
         }
 
-        static public string Reset()
+        public string Reset()
         {
             return RunCmd(Settings.GitDir + "git.exe", "reset --hard");
         }
 
-        static public string Push(string path)
+        public string Push(string path)
+        {
+            Directory.SetCurrentDirectory(Settings.WorkingDir);
+            return RunCmd(Settings.GitDir + "git.exe", "push \"" + path + "\"");
+        }
+
+        public void PullAsync(string path, string branch)
         {
             Directory.SetCurrentDirectory(Settings.WorkingDir);
 
-            string result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "push \"" + path + "\"");
+            RunCmdAsync(Settings.GitDir + "git.exe", "pull \"" + path + "\" \"" + branch + "\"");
+        }
+
+        public string Pull(string path, string branch)
+        {
+            Directory.SetCurrentDirectory(Settings.WorkingDir);
+
+            string result = RunCmd(Settings.GitDir + "git.exe", "pull \"" + path + "\" \"" + branch + "\"");
 
             return result;
         }
 
-        static public string Pull(string path, string branch)
+        public string Resolved()
         {
             Directory.SetCurrentDirectory(Settings.WorkingDir);
 
-            string result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "pull \"" + path + "\" \"" + branch + "\"");
+            string result = RunCmd(Settings.GitDir + "git.exe", "am --3way --resolved");
 
             return result;
         }
 
-        static public string Resolved()
+        public string Skip()
         {
             Directory.SetCurrentDirectory(Settings.WorkingDir);
 
-            string result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "am --3way --resolved");
+            string result = RunCmd(Settings.GitDir + "git.exe", "am --3way --skip");
 
             return result;
         }
 
-        static public string Skip()
+        public string Abort()
         {
             Directory.SetCurrentDirectory(Settings.WorkingDir);
 
-            string result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "am --3way --skip");
+            string result = RunCmd(Settings.GitDir + "git.exe", "am --3way --abort");
 
             return result;
         }
 
-        static public string Abort()
+        public string Patch(string patchFile)
         {
             Directory.SetCurrentDirectory(Settings.WorkingDir);
 
-            string result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "am --3way --abort");
+            string result = RunCmd(Settings.GitDir + "git.exe", "am --3way --signoff " + patchFile);
 
             return result;
         }
 
-        static public string Patch(string patchFile)
+        public string GetSetting(string setting)
         {
-            Directory.SetCurrentDirectory(Settings.WorkingDir);
-
-            string result = GitCommands.RunCmd(Settings.GitDir + "git.exe", "am --3way --signoff " + patchFile);
-
-            return result;
+            return RunCmd(Settings.GitDir + "git.exe", "config --get " + setting);
         }
 
-        static public string GetSetting(string setting)
+        public void SetSetting(string setting, string value)
         {
-            return GitCommands.RunCmd(Settings.GitDir + "git.exe", "config --get " + setting);
+            RunCmd(Settings.GitDir + "git.exe", "config --unset-all " + setting);
+            RunCmd(Settings.GitDir + "git.exe", "config " + setting + " \"" + value + "\"");
         }
 
-        static public void SetSetting(string setting, string value)
-        {
-            GitCommands.RunCmd(Settings.GitDir + "git.exe", "config --unset-all " + setting);
-            GitCommands.RunCmd(Settings.GitDir + "git.exe", "config " + setting + " \"" + value + "\"");
-        }
-
-        static public Patch GetSingleDiff(string from, string to, string filter)
+        public Patch GetSingleDiff(string from, string to, string filter)
         {
             PatchManager patchManager = new PatchManager();
-            patchManager.LoadPatch(GitCommands.RunCmd(Settings.GitDir + "git.exe", "diff --ignore-submodules " + to + " " + from + " -- " + filter), false);
+            patchManager.LoadPatch(RunCmd(Settings.GitDir + "git.exe", "diff --ignore-submodules " + to + " " + from + " -- " + filter), false);
 
             return patchManager.patches.FirstOrDefault();
         }
 
-        static public List<Patch> GetDiff(string from, string to)
+        public List<Patch> GetDiff(string from, string to)
         {
             PatchManager patchManager = new PatchManager();
-            patchManager.LoadPatch(GitCommands.RunCmd(Settings.GitDir + "git.exe", "diff " + from + " " + to), false);
+            patchManager.LoadPatch(RunCmd(Settings.GitDir + "git.exe", "diff " + from + " " + to), false);
 
             return patchManager.patches;
         }
 
-        static public List<string> GetDiffFiles(string from)
+        public List<string> GetDiffFiles(string from)
         {
             string result = RunCmd(Settings.GitDir + "git.exe", "diff --name-only " + from);
 
@@ -246,7 +325,7 @@ namespace GitCommands
             return files.ToList<string>();
         }
 
-        static public List<string> GetDiffFiles(string from, string to)
+        public List<string> GetDiffFiles(string from, string to)
         {
             string result = RunCmd(Settings.GitDir + "git.exe", "diff --name-only " + from + " " + to);
 
@@ -255,7 +334,7 @@ namespace GitCommands
             return files.ToList<string>();
         }
 
-        static public List<GitItemStatus> GitStatus()
+        public List<GitItemStatus> GitStatus()
         {
             string status = RunCmd(Settings.GitDir + "git.exe", "status --untracked=all");
 
@@ -301,18 +380,18 @@ namespace GitCommands
             return gitItemStatusList;
         }
 
-        static public string GetCurrentChanges(string name)
+        public string GetCurrentChanges(string name)
         {
             //return RunCmd(Settings.GitDir + "git.exe", "diff --cached " + name);
             return RunCmd(Settings.GitDir + "git.exe", "diff " + name);
         }
 
-        static public List<GitRevision> GitRevisions()
+        public List<GitRevision> GitRevisions()
         {
             return GitRevisions("");
         }
 
-        static public List<GitRevision> GitRevisions(string filter)
+        public List<GitRevision> GitRevisions(string filter)
         {
             string tree;
             if (string.IsNullOrEmpty(filter))
@@ -355,12 +434,12 @@ namespace GitCommands
             return revisions;
         }
 
-        static public List<GitHead> GetHeads()
+        public List<GitHead> GetHeads()
         {
             return GetHeads(true);
         }
 
-        static public string GetSelectedBranch()
+        public string GetSelectedBranch()
         {
             string branches = RunCmd(Settings.GitDir + "git.exe", "branch");
             string[] branchStrings = branches.Split('\n');
@@ -372,7 +451,7 @@ namespace GitCommands
             return "";
         }
 
-        static public List<GitHead> GetHeads(bool tags)
+        public List<GitHead> GetHeads(bool tags)
         {
             string tree;
             if (tags)
@@ -400,7 +479,7 @@ namespace GitCommands
             return heads;
         }
 
-        static public List<IGitItem> GetFileChanges(string file)
+        public List<IGitItem> GetFileChanges(string file)
         {
             string tree = RunCmd(Settings.GitDir + "git.exe", "whatchanged --all --pretty=oneline " + file);
 
@@ -432,7 +511,7 @@ namespace GitCommands
         }
 
 
-        static public List<IGitItem> GetTree(string id)
+        public List<IGitItem> GetTree(string id)
         {
             string tree = RunCmd(Settings.GitDir + "git.exe", "ls-tree " + id);
 
@@ -463,7 +542,7 @@ namespace GitCommands
             return items;
         }
 
-        public static string GetFileText(string id)
+        public string GetFileText(string id)
         {
             return RunCmd(Settings.GitDir + "git.exe", "cat-file blob " + id);
         }

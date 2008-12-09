@@ -30,7 +30,7 @@ namespace GitUI
 
         private void Mergetool_Click(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.RunRealCmd(GitCommands.Settings.GitDir + "git.exe", "mergetool --tool=kdiff3");
+            new GitCommands.GitCommands().RunRealCmd(GitCommands.Settings.GitDir + "git.exe", "mergetool --tool=kdiff3");
 
             if (MessageBox.Show("Resolved all conflicts? Commit?", "Conflicts solved", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -59,7 +59,7 @@ namespace GitUI
             {
                 GitCommands.Settings.WorkingDir = PullSource.Text;
                 Branches.DisplayMember = "Name";
-                Branches.DataSource = GitCommands.GitCommands.GetHeads(false);
+                Branches.DataSource = new GitCommands.GitCommands().GetHeads(false);
             }
             finally
             {
@@ -75,7 +75,58 @@ namespace GitUI
                 return;
             }
 
-            Output.Text = GitCommands.GitCommands.Pull(PullSource.Text, Branches.SelectedText);
+            try
+            {
+                Output.Text = "";
+
+                Pull.Enabled = false;
+                BrowseSource.Enabled = false;
+                Mergetool.Enabled = false;
+
+                GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+                gitCommands.DataReceived += new System.Diagnostics.DataReceivedEventHandler(gitCommands_DataReceived);
+                gitCommands.Exited += new EventHandler(gitCommands_Exited);
+                gitCommands.PullAsync(PullSource.Text, Branches.SelectedText);
+
+                Output.Text = "Start pull \n";
+            }
+            catch
+            {
+            }
+
+        }
+
+        // This method is passed in to the SetTextCallBack delegate
+        // to set the Text property of textBox1.
+        private void SetText(string text)
+        {
+            this.Output.Text += "\n" + text;
+        }
+
+        void gitCommands_DataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
+        {
+            if (Output.InvokeRequired)
+            {
+                // It's on a different thread, so use Invoke.
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { e.Data });
+            }
+            else
+            {
+                SetText(e.Data);
+            }
+        }
+
+        void gitCommands_Exited(object sender, EventArgs e)
+        {
+            DoneCallback d = new DoneCallback(Done);
+            this.Invoke(d, new object[] { });
+        }
+        private void Done()
+        {
+            this.Pull.Enabled = true;
+            BrowseSource.Enabled = true;
+            Mergetool.Enabled = true;
         }
 
     }

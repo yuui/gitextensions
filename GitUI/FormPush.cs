@@ -32,7 +32,7 @@ namespace GitUI
                 return;
             }
 
-            Output.Text = GitCommands.GitCommands.Push(PushDestination.Text);
+            Output.Text = new GitCommands.GitCommands().Push(PushDestination.Text);
         }
     }
 }

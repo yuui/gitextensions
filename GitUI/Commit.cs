@@ -23,7 +23,9 @@ namespace GitUI
 
         private void Initialize()
         {
-            List<GitItemStatus> itemStatusList = GitCommands.GitCommands.GitStatus();
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            List<GitItemStatus> itemStatusList = gitCommands.GitStatus();
 
             List<GitItemStatus> untrackedItemStatus = new List<GitItemStatus>();
             List<GitItemStatus> trackedItemStatus = new List<GitItemStatus>();
@@ -42,7 +44,9 @@ namespace GitUI
         protected void ShowChanges(GitItemStatus item)
         {
             EditorOptions.SetSyntax(SelectedDiff, item.Name);
-            SelectedDiff.Text = GitCommands.GitCommands.GetCurrentChanges(item.Name);
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+            SelectedDiff.Text = gitCommands.GetCurrentChanges(item.Name);
             SelectedDiff.Refresh();
         }
 
@@ -130,7 +134,9 @@ namespace GitUI
             {
                 if (MessageBox.Show("Are you really sure you want to DELETE all changes?", "WARNING! WARNING!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    OutPut.Text = GitCommands.GitCommands.Reset();
+                    GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
+
+                    OutPut.Text = gitCommands.Reset();
                 }
             }
         }

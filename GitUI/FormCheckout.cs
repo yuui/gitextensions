@@ -36,7 +36,7 @@ namespace GitUI
         private void FormCheckout_Load(object sender, EventArgs e)
         {
             Branch.DisplayMember = "Name";
-            Branch.DataSource = GitCommands.GitCommands.GetHeads();
+            Branch.DataSource = new GitCommands.GitCommands().GetHeads();
         }
 
         private void Branch_SelectedIndexChanged(object sender, EventArgs e)

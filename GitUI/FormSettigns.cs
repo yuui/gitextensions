@@ -15,8 +15,8 @@ namespace GitUI
         {
             InitializeComponent();
 
-            UserName.Text = GitCommands.GitCommands.GetSetting("user.name");
-            UserEmail.Text = GitCommands.GitCommands.GetSetting("user.email");
+            UserName.Text = new GitCommands.GitCommands().GetSetting("user.name");
+            UserEmail.Text = new GitCommands.GitCommands().GetSetting("user.email");
         }
 
         private void UserName_TextChanged(object sender, EventArgs e)
@@ -29,8 +29,8 @@ namespace GitUI
 
         private void Ok_Click(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.SetSetting("user.name", UserName.Text);
-            GitCommands.GitCommands.SetSetting("user.email", UserEmail.Text);
+            new GitCommands.GitCommands().SetSetting("user.name", UserName.Text);
+            new GitCommands.GitCommands().SetSetting("user.email", UserEmail.Text);
             Close();
         }
     }

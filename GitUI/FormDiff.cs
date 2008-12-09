@@ -61,10 +61,10 @@ namespace GitUI
         private void FormDiff_Load(object sender, EventArgs e)
         {
             From.DisplayMember = "Name";
-            From.DataSource = GitCommands.GitCommands.GetHeads();
+            From.DataSource = new GitCommands.GitCommands().GetHeads();
             
             To.DisplayMember = "Name";
-            To.DataSource = GitCommands.GitCommands.GetHeads();
+            To.DataSource = From.DataSource;
         }
     }
 }
