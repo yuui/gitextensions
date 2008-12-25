@@ -275,12 +275,12 @@ namespace FileHashShell
                         }
                     case 13://Bash
                         {
-                            GitCommands.GitCommands.RunBash();
+                            new GitCommands.GitCommands().RunBash();
                             break;
                         }
                     case 14://Gui
                         {
-                            GitCommands.GitCommands.RunGui();
+                            new GitCommands.GitCommands().RunGui();
                             break;
                         }
                     default:

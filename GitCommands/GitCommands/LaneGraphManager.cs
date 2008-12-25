@@ -11,12 +11,14 @@ namespace GitCommands
         {
             LaneGraph graph = new LaneGraph();
 
+            GitCommands gitCommands = new GitCommands();
+
             //Create all seperate lanes
-            foreach (GitHead head in GitCommands.GetHeads(false))
+            foreach (GitHead head in gitCommands.GetHeads(false))
             {
                 Lane lane = graph.AddLane();
 
-                foreach (GitRevision revision in GitCommands.GitRevisions(head.Name))
+                foreach (GitRevision revision in gitCommands.GitRevisions(head.Name))
                 {
                     graph.AddPoint(lane, revision);
                 }

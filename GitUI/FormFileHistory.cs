@@ -23,7 +23,7 @@ namespace GitUI
         private void FormFileHistory_Load(object sender, EventArgs e)
         {
             EditorOptions.SetSyntax(View, FileName);
-            FileChanges.DataSource = GitCommands.GitCommands.GetFileChanges(FileName);
+            FileChanges.DataSource = new GitCommands.GitCommands().GetFileChanges(FileName);
         }
 
         private void FileChanges_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,7 +39,7 @@ namespace GitUI
             {
                 IGitItem revision = (IGitItem)FileChanges.SelectedRows[0].DataBoundItem;
 
-                View.Text = GitCommands.GitCommands.GetFileText(revision.Guid);
+                View.Text = new GitCommands.GitCommands().GetFileText(revision.Guid);
                 View.Refresh();
             }
 

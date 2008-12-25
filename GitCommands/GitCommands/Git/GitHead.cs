@@ -29,7 +29,9 @@ namespace GitCommands
             {
                 if (subItems == null)
                 {
-                    subItems = GitCommands.GetTree(Guid);
+                    GitCommands gitCommands = new GitCommands();
+
+                    subItems = gitCommands.GetTree(Guid);
                 }
 
                 return subItems;

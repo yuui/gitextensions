@@ -80,7 +80,7 @@ namespace GitUI
                 return;
             }
 
-            string result = GitCommands.GitCommands.Patch(PatchFile.Text);
+            string result = new GitCommands.GitCommands().Patch(PatchFile.Text);
             Output.Text = result;
             if (result.Contains("Patch failed"))
             {
@@ -90,12 +90,12 @@ namespace GitUI
 
         private void Mergetool_Click(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.RunRealCmd(GitCommands.Settings.GitDir + "git.exe", "mergetool");
+            new GitCommands.GitCommands().RunRealCmd(GitCommands.Settings.GitDir + "git.exe", "mergetool");
 
             if (MessageBox.Show("Resolved all conflicts? Run resolved?", "Conflicts solved", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Output.Text += "\n";
-                Output.Text += GitCommands.GitCommands.Resolved();
+                Output.Text += new GitCommands.GitCommands().Resolved();
                 EnableButtons();
             }
         }
@@ -103,21 +103,21 @@ namespace GitUI
         private void Skip_Click(object sender, EventArgs e)
         {
             Output.Text += "\n";
-            Output.Text += GitCommands.GitCommands.Skip();
+            Output.Text += new GitCommands.GitCommands().Skip();
             EnableButtons();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             Output.Text += "\n";
-            Output.Text += GitCommands.GitCommands.Resolved();
+            Output.Text += new GitCommands.GitCommands().Resolved();
             EnableButtons();
         }
 
         private void Abort_Click(object sender, EventArgs e)
         {
             Output.Text += "\n";
-            Output.Text += GitCommands.GitCommands.Abort();
+            Output.Text += new GitCommands.GitCommands().Abort();
             EnableButtons();
         }
 
