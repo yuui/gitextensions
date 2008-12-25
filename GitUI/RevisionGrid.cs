@@ -69,9 +69,9 @@ namespace GitUI
 
         public void RefreshRevisions()
         {
-            string currentCheckout = GitCommands.GitCommands.GetCurrentCheckout();
+            string currentCheckout = new GitCommands.GitCommands().GetCurrentCheckout();
 
-            List<GitRevision> revisions = GitCommands.GitCommands.GitRevisionGraph();
+            List<GitRevision> revisions = new GitCommands.GitCommands().GitRevisionGraph();
 
             {
                 Revisions.DataSource = revisions;

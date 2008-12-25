@@ -19,7 +19,7 @@ namespace GitUI
         private void FormDeleteBranch_Load(object sender, EventArgs e)
         {
             Branches.DisplayMember = "Name";
-            Branches.DataSource = GitCommands.GitCommands.GetHeads(true);
+            Branches.DataSource = new GitCommands.GitCommands().GetHeads(true);
         }
 
         private void Ok_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace GitUI
             {
                 if (MessageBox.Show("Are you sure you want to delete this branch?\nDeleting a branch can cause commits to be deleted too!", "Delete branch", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Command executed \n" + GitCommands.GitCommands.DeleteBranch(Branches.Text), "Delete branch");
+                    MessageBox.Show("Command executed \n" + new GitCommands.GitCommands().DeleteBranch(Branches.Text), "Delete branch");
                 }
             }
             catch

@@ -27,10 +27,10 @@ namespace GitUI
                 if (((GitItem)item).ItemType == "blob")
                 {
                     EditorOptions.SetSyntax(FileText, ((GitItem)item).FileName);
-                    FileText.Text = GitCommands.GitCommands.GetFileText(item.Guid);
+                    FileText.Text = new GitCommands.GitCommands().GetFileText(item.Guid);
                     FileText.Refresh();
 
-                    FileChanges.DataSource = GitCommands.GitCommands.GetFileChanges(((GitItem)item).FileName);
+                    FileChanges.DataSource = new GitCommands.GitCommands().GetFileChanges(((GitItem)item).FileName);
                 }
 
 
@@ -48,14 +48,14 @@ namespace GitUI
 
         protected void Initialize()
         {
-            string selectedHead = GitCommands.GitCommands.GetSelectedBranch();
+            string selectedHead = new GitCommands.GitCommands().GetSelectedBranch();
             CurrentBranch.Text = selectedHead;
 
             ShowRevisions();
 
             Workingdir.Text = GitCommands.Settings.WorkingDir;
 
-            if (GitCommands.GitCommands.InTheMiddleOfConflictedMerge())
+            if (new GitCommands.GitCommands().InTheMiddleOfConflictedMerge())
             {
                 if (warning == null)
                 {

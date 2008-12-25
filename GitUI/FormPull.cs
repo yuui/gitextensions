@@ -30,7 +30,7 @@ namespace GitUI
 
         private void Mergetool_Click(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.RunRealCmd(GitCommands.Settings.GitDir + "git.exe", "mergetool");
+            new GitCommands.GitCommands().RunRealCmd(GitCommands.Settings.GitDir + "git.exe", "mergetool");
 
             if (MessageBox.Show("Resolved all conflicts? Commit?", "Conflicts solved", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {

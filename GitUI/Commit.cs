@@ -23,9 +23,9 @@ namespace GitUI
 
         private void Initialize()
         {
-            List<GitItemStatus> changedFiles = GitCommands.GitCommands.GetAllChangedFiles();
+            List<GitItemStatus> changedFiles = new GitCommands.GitCommands().GetAllChangedFiles();
 
-            List<GitItemStatus> stagedFiles = GitCommands.GitCommands.GetStagedFiles();
+            List<GitItemStatus> stagedFiles = new GitCommands.GitCommands().GetStagedFiles();
 
             Staged.DataSource = stagedFiles;
 
@@ -35,7 +35,7 @@ namespace GitUI
         protected void ShowChanges(GitItemStatus item, bool staged)
         {
             EditorOptions.SetSyntax(SelectedDiff, item.Name);
-            SelectedDiff.Text = GitCommands.GitCommands.GetCurrentChanges(item.Name, staged);
+            SelectedDiff.Text = new GitCommands.GitCommands().GetCurrentChanges(item.Name, staged);
             SelectedDiff.Refresh();
         }
 

@@ -26,7 +26,7 @@ namespace GitUI
 
         private void FormFormatPath_Load(object sender, EventArgs e)
         {
-            string selectedHead = GitCommands.GitCommands.GetSelectedBranch();
+            string selectedHead = new GitCommands.GitCommands().GetSelectedBranch();
             SelectedBranch.Text = "Current branch: " + selectedHead;
         }
 

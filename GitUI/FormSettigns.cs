@@ -24,11 +24,11 @@ namespace GitUI
 
             GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
 
-            UserName.Text = GitCommands.GitCommands.GetSetting("user.name");
-            UserEmail.Text = GitCommands.GitCommands.GetSetting("user.email");
-            Editor.Text = GitCommands.GitCommands.GetSetting("core.editor");
-            MergeTool.Text = GitCommands.GitCommands.GetSetting("merge.tool");
-            KeepMergeBackup.Checked = GitCommands.GitCommands.GetSetting("merge.keepBackup").Trim() == "true";
+            UserName.Text = gitCommands.GetSetting("user.name");
+            UserEmail.Text = gitCommands.GetSetting("user.email");
+            Editor.Text = gitCommands.GetSetting("core.editor");
+            MergeTool.Text = gitCommands.GetSetting("merge.tool");
+            KeepMergeBackup.Checked = gitCommands.GetSetting("merge.keepBackup").Trim() == "true";
             
 
             GlobalUserName.Text = gitCommands.GetGlobalSetting("user.name");
@@ -50,14 +50,14 @@ namespace GitUI
         {
             GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
 
-            GitCommands.GitCommands.SetSetting("user.name", UserName.Text);
-            GitCommands.GitCommands.SetSetting("user.email", UserEmail.Text);
-            GitCommands.GitCommands.SetSetting("core.editor", Editor.Text);
-            GitCommands.GitCommands.SetSetting("merge.tool", MergeTool.Text);
+            gitCommands.SetSetting("user.name", UserName.Text);
+            gitCommands.SetSetting("user.email", UserEmail.Text);
+            gitCommands.SetSetting("core.editor", Editor.Text);
+            gitCommands.SetSetting("merge.tool", MergeTool.Text);
             if (KeepMergeBackup.Checked)
-                GitCommands.GitCommands.SetSetting("merge.keepBackup", "true");
+                gitCommands.SetSetting("merge.keepBackup", "true");
             else
-                GitCommands.GitCommands.SetSetting("merge.keepBackup", "false");
+                gitCommands.SetSetting("merge.keepBackup", "false");
 
 
             gitCommands.SetGlobalSetting("user.name", GlobalUserName.Text);
@@ -122,7 +122,7 @@ namespace GitUI
                 TextWriter tw = new StreamWriter(System.IO.Path.GetTempPath() + "GitExtensions.reg", false);
                 tw.Write(reg);
                 tw.Close();
-                GitCommands.GitCommands.RunCmd("regedit", System.IO.Path.GetTempPath() + "GitExtensions.reg");
+                new GitCommands.GitCommands().RunCmd("regedit", System.IO.Path.GetTempPath() + "GitExtensions.reg");
             }
             catch(UnauthorizedAccessException ex)
             {
@@ -188,7 +188,7 @@ namespace GitUI
                     DiffTool.Text = "There is a mergetool configured.";
                 }
 
-                if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd("git.exe", "status")))
+                if (string.IsNullOrEmpty(gitCommands.RunCmd("git.exe", "status")))
                 {
                     GitFound.BackColor = Color.LightSalmon;
                     GitFound.Text = "Git.exe needs to be in the system path. To solve this problem you can add git.exe to the path or reinstall git.";
@@ -230,16 +230,16 @@ namespace GitUI
 
         private void ShellExtensionsRegistered_Click(object sender, EventArgs e)
         {
-
+            GitCommands.GitCommands gitCommands = new GitCommands.GitCommands();
             if (File.Exists(GetRegistryValue(Registry.LocalMachine, "Software\\GitExtensions", "InstallDir") + "\\GitExtensionsShellEx.dll"))
-                GitCommands.GitCommands.RunCmd("regsvr32", "\"" + GetRegistryValue(Registry.LocalMachine, "Software\\GitExtensions", "InstallDir") + "\\GitExtensionsShellEx.dll\"");
+                gitCommands.RunCmd("regsvr32", "\"" + GetRegistryValue(Registry.LocalMachine, "Software\\GitExtensions", "InstallDir") + "\\GitExtensionsShellEx.dll\"");
             else
                 {
                     string fileName = Assembly.GetAssembly(GetType()).Location;
                     fileName = fileName.Substring(0, fileName.LastIndexOfAny(new char[] { '\\', '/' })) + "\\GitExtensionsShellEx.dll";
 
                     if (File.Exists(fileName))
-                        GitCommands.GitCommands.RunCmd("regsvr32", fileName);
+                        gitCommands.RunCmd("regsvr32", fileName);
                 }
 
             CheckSettings();

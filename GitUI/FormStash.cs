@@ -25,7 +25,7 @@ namespace GitUI
 
         private void Initialize()
         {
-            List<GitItemStatus> itemStatusList = GitCommands.GitCommands.GitStatus();
+            List<GitItemStatus> itemStatusList = new GitCommands.GitCommands().GitStatus();
 
             List<GitItemStatus> untrackedItemStatus = new List<GitItemStatus>();
             List<GitItemStatus> trackedItemStatus = new List<GitItemStatus>();

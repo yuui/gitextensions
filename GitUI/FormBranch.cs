@@ -26,7 +26,7 @@ namespace GitUI
                     return;
                 }
 
-                MessageBox.Show("Command executed \n" + GitCommands.GitCommands.Branch(BName.Text, RevisionGrid.GetRevisions()[0].Guid), "Branch");
+                MessageBox.Show("Command executed \n" + new GitCommands.GitCommands().Branch(BName.Text, RevisionGrid.GetRevisions()[0].Guid), "Branch");
 
                 RevisionGrid.RefreshRevisions();
             }

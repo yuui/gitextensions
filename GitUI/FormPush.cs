@@ -35,27 +35,27 @@ namespace GitUI
 
             RepositoryHistory.AddMostRecentRepository(PushDestination.Text);
 
-            Process process = GitCommands.GitCommands.PushAsync(PushDestination.Text);
+            Process process = new GitCommands.GitCommands().PushAsync(PushDestination.Text);
 
             process.WaitForExit();
             
         }
 
-        void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            if (e.Data == null) return;
-            string data = e.Data;
-            if (data.StartsWith("Enter passphrase"))
-                ((Process)sender).StandardInput.WriteLine("achttien");
-        }
+        //void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        //{
+        //    if (e.Data == null) return;
+        //    string data = e.Data;
+        //    if (data.StartsWith("Enter passphrase"))
+        //        ((Process)sender).StandardInput.WriteLine("achttien");
+        //}
 
-        void process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            if (e.Data == null) return;
-            string data = e.Data;
-            if (data.StartsWith("Enter passphrase"))
-                ((Process)sender).StandardInput.WriteLine("achttien");
-        }
+        //void process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        //{
+        //    if (e.Data == null) return;
+        //    string data = e.Data;
+        //    if (data.StartsWith("Enter passphrase"))
+        //        ((Process)sender).StandardInput.WriteLine("achttien");
+        //}
 
         private void PushDestination_DropDown(object sender, EventArgs e)
         {
