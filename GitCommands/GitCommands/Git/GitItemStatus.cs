@@ -15,6 +15,15 @@ namespace GitCommands
             IsNew = false;
         }
 
+        public GitItemStatus(string name, bool isTracked, bool isChanged, bool isNew, bool isDeleted)
+        {
+            Name = name;
+            IsTracked = isTracked;
+            IsDeleted = isDeleted;
+            IsChanged = isChanged;
+            IsNew = isNew;
+        }
+
         public string Name { get; set; }
 
         public string ChangeString 

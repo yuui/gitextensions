@@ -38,6 +38,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Extensibility, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -86,6 +91,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Singleton.cs" />
+    <Compile Include="SourceControlProvider\GitSourceControlProviderGuids.cs" />
+    <Compile Include="SourceControlProvider\GitSourceControlProviderPackage.cs" />
     <Compile Include="VisualStudioLogHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +152,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons.bmp" />
+    <None Include="Resources\StatusIcons.bmp" />
     <None Include="Resources\commit113.bmp" />
     <None Include="Resources\commit12.bmp" />
     <None Include="Resources\commit2.bmp" />
@@ -180,6 +188,7 @@
     <None Include="GitPluginKey.pfx" />
     <None Include="Properties\DataSources\GitCommands.GitItem.datasource" />
     <None Include="Properties\DataSources\GitCommands.GitRevision.datasource" />
+    <None Include="SourceControlProvider\PkgCmd.vsct" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <PropertyGroup>
