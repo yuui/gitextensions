@@ -59,6 +59,7 @@
     <Compile Include="Git\GitStash.cs" />
     <Compile Include="Git\GitSubmodule.cs" />
     <Compile Include="Git\IGitItem.cs" />
+    <Compile Include="Git\IndexWatcher.cs" />
     <Compile Include="Init.cs" />
     <Compile Include="Lane.cs" />
     <Compile Include="LaneGraph.cs" />

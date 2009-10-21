@@ -32,6 +32,10 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PublicAssemblies\EnvDTE.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0" />
@@ -50,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Git\GitFileStatus.cs" />
+    <Compile Include="Git\LoadSettings.cs" />
     <Compile Include="MyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,10 +74,11 @@
     <Compile Include="PkgCmdID.cs" />
     <Compile Include="SCC\GitSourceControlProvider.cs" />
     <Compile Include="SCC\ProvideSourceControlProvider.cs" />
+    <Compile Include="SCC\StatusIcons.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -93,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Package.ico" />
+    <Resource Include="Resources\statusIcons.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GitCommands\GitCommands\GitCommands.csproj">

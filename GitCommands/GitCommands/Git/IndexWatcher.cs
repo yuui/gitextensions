@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace GitUI
+namespace GitCommands
 {
     public class IndexWatcher
     {
@@ -23,20 +23,20 @@ namespace GitUI
 
         private void SetFileSystemWatcher()
         {
-            if (!string.IsNullOrEmpty(GitCommands.Settings.WorkingDirGitDir()))
+            if (!string.IsNullOrEmpty(Settings.WorkingDirGitDir()))
             {
                 try
                 {
-                    enabled = GitCommands.Settings.UseFastChecks;
+                    enabled = Settings.UseFastChecks;
 
-                    Path = GitCommands.Settings.WorkingDirGitDir();
+                    Path = Settings.WorkingDirGitDir();
 
-                    GitIndexWatcher.Path = GitCommands.Settings.WorkingDirGitDir();
+                    GitIndexWatcher.Path = Settings.WorkingDirGitDir();
                     GitIndexWatcher.Filter = "index";
                     GitIndexWatcher.IncludeSubdirectories = false;
                     GitIndexWatcher.EnableRaisingEvents = enabled;
 
-                    RefsWatcher.Path = GitCommands.Settings.WorkingDirGitDir() + "\\refs";
+                    RefsWatcher.Path = Settings.WorkingDirGitDir() + "\\refs";
                     RefsWatcher.IncludeSubdirectories = true;
                     RefsWatcher.EnableRaisingEvents = enabled;
                 }
@@ -64,7 +64,7 @@ namespace GitUI
                 if (!enabled)
                     return true;
 
-                if (Path != GitCommands.Settings.WorkingDirGitDir())
+                if (Path != Settings.WorkingDirGitDir())
                     return true;
 
                 return indexChanged;
@@ -88,8 +88,8 @@ namespace GitUI
 
         public void Reset()
         {
-            if (Path != GitCommands.Settings.WorkingDirGitDir() ||
-                enabled != GitCommands.Settings.UseFastChecks)
+            if (Path != Settings.WorkingDirGitDir() ||
+                enabled != Settings.UseFastChecks)
                 SetFileSystemWatcher();
 
             IndexChanged = false;
@@ -97,8 +97,8 @@ namespace GitUI
 
         public void Clear()
         {
-            if (Path != GitCommands.Settings.WorkingDirGitDir() ||
-                enabled != GitCommands.Settings.UseFastChecks)
+            if (Path != Settings.WorkingDirGitDir() ||
+                enabled != Settings.UseFastChecks)
                 SetFileSystemWatcher();
 
             IndexChanged = true;

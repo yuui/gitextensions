@@ -45,6 +45,7 @@ namespace Henk.GitExtensionsSccProvider
     [ProvideSourceControlProvider("GitExtensions Source Control Provider", "#500")]
     // This attribute registers a tool window exposed by this package.
     [ProvideToolWindow(typeof(MyToolWindow))]
+    [ProvideAutoLoad(GuidList.guidGitExtensionsSccProviderPkgString)]
     [Guid(GuidList.guidGitExtensionsSccProviderPkgString)]
     public sealed class GitExtensionsSccProviderPackage : Package
     {
@@ -95,7 +96,7 @@ namespace Henk.GitExtensionsSccProvider
             base.Initialize();
 
             // Proffer the source control service implemented by the provider
-            sccService = new GitSourceControlProvider();
+            sccService = new GitSourceControlProvider(this);
             ((IServiceContainer)this).AddService(typeof(GitSourceControlProvider), sccService, true);
 
             // Add our command handlers for menu (commands must exist in the .vsct file)
@@ -144,5 +145,34 @@ namespace Henk.GitExtensionsSccProvider
                        out result));
         }
 
+    }
+
+    public static class Extensions
+    {
+        public static T GetService<T>(this System.IServiceProvider provider)
+        {
+            return (T)provider.GetService(typeof(T));
+        }
+
+        public static T GetService<S, T>(this System.IServiceProvider provider)
+        {
+            return (T)provider.GetService(typeof(S));
+        }
+
+        public static EnvDTE.Property GetPropertyByName(this EnvDTE.Properties props, string propName)
+        {
+            foreach (EnvDTE.Property property in props)
+            {
+                if (property.Name == propName)
+                    return property;
+            }
+
+           return null;
+        }
+
+        public static string GetFullPath(this EnvDTE.ProjectItem item)
+        {
+            return item.Properties.GetPropertyByName("FullPath").Value.ToString();
+        }
     }
 }
