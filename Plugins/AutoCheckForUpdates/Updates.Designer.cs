@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updates));
-            this.Close = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.UpdateLabel = new System.Windows.Forms.Label();
             this.link = new System.Windows.Forms.LinkLabel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -37,13 +37,13 @@
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(363, 103);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 23);
-            this.Close.TabIndex = 0;
-            this.Close.Text = "Close";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
+            this.CloseButton.Location = new System.Drawing.Point(363, 103);
+            this.CloseButton.Name = "Close";
+            this.CloseButton.Size = new System.Drawing.Size(75, 23);
+            this.CloseButton.TabIndex = 0;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.Close_Click);
             // 
             // UpdateLabel
             // 
@@ -81,8 +81,8 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.link);
             this.Controls.Add(this.UpdateLabel);
-            this.Controls.Add(this.Close);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Controls.Add(this.CloseButton);
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Updates";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Check for update";
@@ -95,7 +95,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label UpdateLabel;
         private System.Windows.Forms.LinkLabel link;
         private System.Windows.Forms.ProgressBar progressBar1;

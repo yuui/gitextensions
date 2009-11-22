@@ -17,7 +17,7 @@ namespace GitCommands
             if (string.IsNullOrEmpty(repo))
                 return;
 
-            repo = repo.Replace('/', '\\');
+            repo = Settings.FixPath(repo);
             if (!repo.EndsWith("\\"))
                 repo += "\\";
 

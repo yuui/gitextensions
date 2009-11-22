@@ -30,7 +30,7 @@ namespace AutoCheckForUpdates
 
         private void Close_Click(object sender, EventArgs e)
         {
-            this.Close();
+            base.Close();
         }
 
         private void link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -106,7 +106,7 @@ namespace AutoCheckForUpdates
                 {
                     UpdateLabel.Text = "No updates found";
                     if (AutoClose)
-                        this.Close();
+                        base.Close();
                 }
 
             }

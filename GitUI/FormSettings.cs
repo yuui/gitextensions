@@ -535,7 +535,7 @@ namespace GitUI
 
         private static bool CanFindGitCmd()
         {
-            return !string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(GitCommands.Settings.GitDir + "git.cmd", ""));
+            return !string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(Settings.GitCmd, ""));
         }
 
         private void GitExtensionsInstall_Click(object sender, EventArgs e)
@@ -675,7 +675,7 @@ namespace GitUI
                 return;
             }
 
-            MessageBox.Show("Command git.cmd can be runned using: " + GitCommands.Settings.GitDir + "git.cmd", "Locate git.cmd");
+            MessageBox.Show("Command git.cmd can be runned using: " + Settings.GitCmd, "Locate git.cmd");
             GitPath.Text = GitCommands.Settings.GitDir;
             Rescan_Click(null, null);
         }
@@ -683,16 +683,16 @@ namespace GitUI
         public static bool SolveGitCmdDir()
         {
             GitCommands.Settings.GitDir = GetRegistryValue(Registry.LocalMachine, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1", "InstallLocation") + "\\cmd\\";
-            if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(GitCommands.Settings.GitDir + "git.cmd", "")))
+            if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(Settings.GitCmd, "")))
             {
                 GitCommands.Settings.GitDir = @"c:\Program Files (x86)\Git\cmd\";
-                if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(GitCommands.Settings.GitDir + "git.cmd", "")))
+                if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(Settings.GitCmd, "")))
                 {
                     GitCommands.Settings.GitDir = @"c:\Program Files\Git\cmd\";
-                    if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(GitCommands.Settings.GitDir + "git.cmd", "")))
+                    if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(Settings.GitCmd, "")))
                     {
                         GitCommands.Settings.GitDir = "";
-                        if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(GitCommands.Settings.GitDir + "git.cmd", "")))
+                        if (string.IsNullOrEmpty(GitCommands.GitCommands.RunCmd(Settings.GitCmd, "")))
                         {
                             return false;
                         }

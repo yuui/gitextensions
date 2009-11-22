@@ -71,7 +71,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Revert);
             this.Controls.Add(this.RevertLabel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRevert";
             this.Text = "Revert file changes";
             this.Load += new System.EventHandler(this.FormRevert_Load);

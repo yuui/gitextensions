@@ -91,7 +91,7 @@
             // 
             // SuccessImage
             // 
-            this.SuccessImage.Image = global::GitUI.Properties.Resources.success1;
+//            this.SuccessImage.Image = global::GitUI.Properties.Resources.success1;
             this.SuccessImage.Location = new System.Drawing.Point(3, 3);
             this.SuccessImage.Name = "SuccessImage";
             this.SuccessImage.Size = new System.Drawing.Size(47, 46);
@@ -101,7 +101,7 @@
             // 
             // ErrorImage
             // 
-            this.ErrorImage.Image = global::GitUI.Properties.Resources.error;
+            //this.ErrorImage.Image = global::GitUI.Properties.Resources.error;
             this.ErrorImage.Location = new System.Drawing.Point(2, 3);
             this.ErrorImage.Name = "ErrorImage";
             this.ErrorImage.Size = new System.Drawing.Size(45, 44);
@@ -233,7 +233,7 @@
             this.ClientSize = new System.Drawing.Size(627, 261);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormProcess";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Process";

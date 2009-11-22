@@ -159,7 +159,7 @@
             // 
             // LoadSSHKey
             // 
-            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
+//            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
             this.LoadSSHKey.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoadSSHKey.Location = new System.Drawing.Point(130, 39);
             this.LoadSSHKey.Name = "LoadSSHKey";
@@ -179,7 +179,7 @@
             // 
             // TestConnection
             // 
-            this.TestConnection.Image = global::GitUI.Properties.Resources.putty;
+//            this.TestConnection.Image = global::GitUI.Properties.Resources.putty;
             this.TestConnection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TestConnection.Location = new System.Drawing.Point(279, 39);
             this.TestConnection.Name = "TestConnection";
@@ -612,7 +612,7 @@
             this.ClientSize = new System.Drawing.Size(656, 221);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormRemotes";

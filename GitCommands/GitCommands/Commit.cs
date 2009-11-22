@@ -29,9 +29,9 @@ namespace GitCommands
         public void Execute()
         {
             if (Dto.Amend)
-                Dto.Result = GitCommands.RunCmd(Settings.GitDir + "git.cmd", "commit --amend -m \"" + Dto.Message + "\"");
+                GitCommands.RunCmd(Settings.GitCmd, "commit --amend -m \"" + Dto.Message + "\"");
             else
-                Dto.Result = GitCommands.RunCmd(Settings.GitDir + "git.cmd", "commit -m \"" + Dto.Message + "\"");
+                GitCommands.RunCmd(Settings.GitCmd, "commit -m \"" + Dto.Message + "\"");
         }
     }
 }

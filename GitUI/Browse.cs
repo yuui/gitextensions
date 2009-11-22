@@ -135,12 +135,12 @@ namespace GitUI
 
         private void SetIndexDirty()
         {
-            RefreshButton.Image = Resources.arrow_refresh_dirty;
+            //RefreshButton.Image = Resources.arrow_refresh_dirty;
         }
 
         private void SetIndexClean()
         {
-            RefreshButton.Image = Resources.arrow_refresh;
+            //RefreshButton.Image = Resources.arrow_refresh;
         }
 
 
@@ -433,7 +433,7 @@ namespace GitUI
 
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    GitCommands.GitCommands.RunCmd(Settings.GitDir + "git.cmd", "cat-file blob \"" + ((GitItem)item).Guid + "\" > \"" + fileDialog.FileName + "\"");
+                    GitCommands.GitCommands.RunCmd(Settings.GitCmd, "cat-file blob \"" + ((GitItem)item).Guid + "\" > \"" + fileDialog.FileName + "\"");
                 }
             }
         }
@@ -452,7 +452,7 @@ namespace GitUI
                         fileName = fileName.Substring(fileName.LastIndexOf('/') + 1);
 
                     fileName = Path.GetTempPath() + fileName;
-                    GitCommands.GitCommands.RunCmd(Settings.GitDir + "git.cmd", "cat-file blob \"" + ((GitItem)item).Guid + "\" > \"" + fileName + "\"");
+                    GitCommands.GitCommands.RunCmd(Settings.GitCmd, "cat-file blob \"" + ((GitItem)item).Guid + "\" > \"" + fileName + "\"");
                     OpenWith.OpenAs(fileName);
                 }            
         }
@@ -471,7 +471,7 @@ namespace GitUI
                         fileName = fileName.Substring(fileName.LastIndexOf('/') + 1);
 
                     fileName = Path.GetTempPath() + fileName;
-                    GitCommands.GitCommands.RunCmd(Settings.GitDir + "git.cmd", "cat-file blob \"" + ((GitItem)item).Guid + "\" > \"" + fileName + "\"");
+                    GitCommands.GitCommands.RunCmd(Settings.GitCmd, "cat-file blob \"" + ((GitItem)item).Guid + "\" > \"" + fileName + "\"");
                     System.Diagnostics.Process.Start(fileName);
                 }
         }

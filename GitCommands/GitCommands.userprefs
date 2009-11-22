@@ -1,0 +1,114 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.DebuggingService>
+    <BreakpointStore>
+      <Breakpoint file="/media/Data/GitExtensions/GitUI/FormSettings.cs" line="20" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService>
+  <MonoDevelop.Ide.Workbench ActiveDocument="../GitUI/FormSettings.cs" ctype="Workbench">
+    <Files>
+      <File FileName="../GitUI/FormSettings.cs" Line="538" Column="85" />
+      <File FileName="../GitPlugin/Connect.cs" Line="16" Column="18" />
+      <File FileName="../Plugins/AutoCheckForUpdates/Updates.cs" Line="14" Column="2" />
+      <File FileName="../Plugins/AutoCheckForUpdates/Updates.Designer.cs" Line="85" Column="3" />
+      <File FileName="../Plugins/AutoCheckForUpdates/Updates.resx" Line="10" Column="50" />
+      <File FileName="../GitUI/Commit.cs" Line="18" Column="28" />
+      <File FileName="../GitUI/FormSettings.Designer.cs" Line="1693" Column="27" />
+      <File FileName="GitExtensions/Program.cs" Line="24" Column="4" />
+      <File FileName="../GitUI/EditNetSpell.cs" Line="1" Column="1" />
+      <File FileName="../GitUI/RevisionGrid.cs" Line="46" Column="1" />
+      <File FileName="../GitUI/Properties/Resources.Designer.cs" Line="356" Column="52" />
+      <File FileName="../GitUI/Properties/Resources.resx" Line="202" Column="17" />
+      <File FileName="../GitUI/Browse.Designer.cs" Line="1365" Column="3" />
+      <File FileName="../GitUI/RevisionGrid.Designer.cs" Line="382" Column="3" />
+      <File FileName="../GitUI/FormProcess.Designer.cs" Line="236" Column="3" />
+      <File FileName="../GitUI/FormPuttyError.Designer.cs" Line="102" Column="3" />
+      <File FileName="../GitUI/AboutBox.Designer.cs" Line="168" Column="3" />
+      <File FileName="../GitUI/Commit.Designer.cs" Line="717" Column="3" />
+      <File FileName="../GitUI/FormClone.Designer.cs" Line="258" Column="1" />
+      <File FileName="../GitUI/FormCommitCount.Designer.cs" Line="66" Column="1" />
+      <File FileName="../GitUI/FormDonate.Designer.cs" Line="86" Column="1" />
+      <File FileName="../GitUI/FormLoadPuttySSHKey.Designer.cs" Line="88" Column="1" />
+      <File FileName="../GitUI/FormMergeBranch.Designer.cs" Line="145" Column="1" />
+      <File FileName="../GitUI/FormPull.Designer.cs" Line="330" Column="3" />
+      <File FileName="../GitUI/FormPush.Designer.cs" Line="338" Column="3" />
+      <File FileName="../GitUI/FormRebase.Designer.cs" Line="320" Column="3" />
+      <File FileName="../GitUI/FormRemotes.Designer.cs" Line="615" Column="3" />
+      <File FileName="../GitUI/FindAndReplaceForm.resx" Line="1" Column="1" />
+      <File FileName="../GitUI/FindAndReplaceForm.designer.cs" Line="190" Column="3" />
+      <File FileName="../GitUI/FormAddFiles.Designer.cs" Line="85" Column="3" />
+      <File FileName="../GitUI/FormAddSubmodule.Designer.cs" Line="129" Column="3" />
+      <File FileName="../GitUI/FormArchive.Designer.cs" Line="120" Column="3" />
+      <File FileName="../GitUI/FormBranch.Designer.cs" Line="135" Column="1" />
+      <File FileName="../GitUI/FormBranchSmall.Designer.cs" Line="87" Column="1" />
+      <File FileName="../GitUI/FormChangeLog1.Designer.cs" Line="50" Column="1" />
+      <File FileName="../GitUI/FormCheckout.Designer.cs" Line="90" Column="1" />
+      <File FileName="../GitUI/FormCheckoutBranch.Designer.cs" Line="103" Column="1" />
+      <File FileName="../GitUI/FormCherryPick.Designer.cs" Line="135" Column="1" />
+      <File FileName="../GitUI/FormCommandlineHelp.Designer.cs" Line="50" Column="1" />
+      <File FileName="../GitUI/FormDeleteBranch.Designer.cs" Line="112" Column="1" />
+      <File FileName="../GitUI/FormDeleteTag.Designer.cs" Line="75" Column="1" />
+      <File FileName="../GitUI/FormDiff.Designer.cs" Line="124" Column="1" />
+      <File FileName="../GitUI/FormDiffSmall.Designer.cs" Line="121" Column="1" />
+      <File FileName="../GitUI/FormEdit.Designer.cs" Line="49" Column="1" />
+      <File FileName="../GitUI/FormFileHistory.Designer.cs" Line="223" Column="1" />
+      <File FileName="../GitUI/FormFormatPath.Designer.cs" Line="244" Column="1" />
+      <File FileName="../GitUI/FormGitIgnore.Designer.cs" Line="106" Column="1" />
+      <File FileName="../GitUI/FormInit.Designer.cs" Line="124" Column="1" />
+      <File FileName="../GitUI/FormMailMap.Designer.cs" Line="94" Column="1" />
+      <File FileName="../GitUI/FormModifiedDeletedCreated.Designer.cs" Line="87" Column="1" />
+      <File FileName="../GitUI/FormPluginSettings.Designer.cs" Line="67" Column="3" />
+      <File FileName="../GitUI/FormResetCurrentBranch.Designer.cs" Line="170" Column="3" />
+      <File FileName="../GitUI/FormResolveConflicts.Designer.cs" Line="349" Column="3" />
+      <File FileName="../GitUI/FormRevert.Designer.cs" Line="74" Column="3" />
+      <File FileName="../GitUI/FormRevertCommitSmall.Designer.cs" Line="119" Column="3" />
+      <File FileName="../GitUI/FormRevisionFilter.Designer.cs" Line="357" Column="3" />
+      <File FileName="../GitUI/FormStash.Designer.cs" Line="296" Column="3" />
+      <File FileName="../GitUI/FormSubmodules.Designer.cs" Line="380" Column="3" />
+      <File FileName="../GitUI/FormTag.Designer.cs" Line="105" Column="3" />
+      <File FileName="../GitUI/FormTagSmall.Designer.cs" Line="74" Column="3" />
+      <File FileName="../GitUI/FormVerify.Designer.cs" Line="261" Column="3" />
+      <File FileName="../GitUI/GitLogForm.Designer.cs" Line="50" Column="3" />
+      <File FileName="../GitUI/MergePatch.Designer.cs" Line="259" Column="3" />
+      <File FileName="../GitUI/OpenDirectory.Designer.cs" Line="90" Column="3" />
+      <File FileName="../GitUI/ApplyPatch.designer.cs" Line="187" Column="3" />
+      <File FileName="../Plugins/Statistics/GitStatistics/FormGitStatistics.Designer.cs" Line="437" Column="48" />
+      <File FileName="../GitUI/Browse.cs" Line="437" Column="18" />
+      <File FileName="../GitUI/FormPull.cs" Line="36" Column="48" />
+      <File FileName="../GitUI/FormChangeLog1.cs" Line="24" Column="2" />
+      <File FileName="../GitUI/FileViewer.cs" Line="33" Column="12" />
+      <File FileName="../GitUI/FileViewer.Designer.cs" Line="57" Column="15" />
+      <File FileName="GitCommands/Settings.cs" Line="17" Column="12" />
+      <File FileName="GitCommands/Checkout.cs" Line="29" Column="13" />
+      <File FileName="GitCommands/RevisionGraph.cs" Line="53" Column="54" />
+      <File FileName="GitCommands/Commit.cs" Line="32" Column="32" />
+      <File FileName="GitCommands/Git/GitCommands.cs" Line="362" Column="49" />
+      <File FileName="GitCommands/Diff.cs" Line="33" Column="13" />
+      <File FileName="GitCommands/Init.cs" Line="27" Column="70" />
+      <File FileName="GitCommands/ShortDiff.cs" Line="31" Column="41" />
+      <File FileName="GitCommands/Push.cs" Line="27" Column="41" />
+      <File FileName="GitCommands/Pull.cs" Line="27" Column="41" />
+      <File FileName="../GitUI/FormVerify.cs" Line="59" Column="60" />
+      <File FileName="../GitUI/GitUICommands.cs" Line="125" Column="47" />
+      <File FileName="../GitUI/FormProcess.cs" Line="42" Column="67" />
+      <File FileName="../GitUI/FormPush.cs" Line="70" Column="55" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="GitCommands" expanded="True">
+            <Node name="Git" expanded="True" />
+          </Node>
+          <Node name="GitUI" expanded="True">
+            <Node name="FormSettings.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True">
+          <Node name="GitUI" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

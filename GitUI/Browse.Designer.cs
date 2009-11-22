@@ -241,7 +241,7 @@
             // RefreshButton
             // 
             this.RefreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
+//            this.RefreshButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshButton.Image")));
             this.RefreshButton.ImageTransparentColor = System.Drawing.Color.White;
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(23, 22);
@@ -255,7 +255,7 @@
             // 
             // Workingdir
             // 
-            this.Workingdir.Image = ((System.Drawing.Image)(resources.GetObject("Workingdir.Image")));
+//            this.Workingdir.Image = ((System.Drawing.Image)(resources.GetObject("Workingdir.Image")));
             this.Workingdir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Workingdir.Name = "Workingdir";
             this.Workingdir.Size = new System.Drawing.Size(87, 22);
@@ -265,7 +265,7 @@
             // 
             // CurrentBranch
             // 
-            this.CurrentBranch.Image = ((System.Drawing.Image)(resources.GetObject("CurrentBranch.Image")));
+//            this.CurrentBranch.Image = ((System.Drawing.Image)(resources.GetObject("CurrentBranch.Image")));
             this.CurrentBranch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CurrentBranch.Name = "CurrentBranch";
             this.CurrentBranch.Size = new System.Drawing.Size(64, 22);
@@ -286,7 +286,7 @@
             this.stashPopToolStripMenuItem,
             this.toolStripSeparator9,
             this.viewStashToolStripMenuItem});
-            this.toolStripSplitStash.Image = global::GitUI.Properties.Resources.stash1;
+            //this.toolStripSplitStash.Image = global::GitUI.Properties.Resources.stash1;
             this.toolStripSplitStash.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitStash.Name = "toolStripSplitStash";
             this.toolStripSplitStash.Size = new System.Drawing.Size(32, 22);
@@ -325,7 +325,7 @@
             // 
             // toolStripButton1
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+//            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(71, 22);
@@ -335,7 +335,7 @@
             // toolStripButtonPull
             // 
             this.toolStripButtonPull.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPull.Image = global::GitUI.Properties.Resources._4;
+            //this.toolStripButtonPull.Image = global::GitUI.Properties.Resources._4;
             this.toolStripButtonPull.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPull.Name = "toolStripButtonPull";
             this.toolStripButtonPull.Size = new System.Drawing.Size(23, 22);
@@ -345,7 +345,7 @@
             // toolStripButtonPush
             // 
             this.toolStripButtonPush.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPush.Image = global::GitUI.Properties.Resources._31;
+            //this.toolStripButtonPush.Image = global::GitUI.Properties.Resources._31;
             this.toolStripButtonPush.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPush.Name = "toolStripButtonPush";
             this.toolStripButtonPush.Size = new System.Drawing.Size(23, 22);
@@ -359,7 +359,7 @@
             // 
             // GitBash
             // 
-            this.GitBash.Image = ((System.Drawing.Image)(resources.GetObject("GitBash.Image")));
+//            this.GitBash.Image = ((System.Drawing.Image)(resources.GetObject("GitBash.Image")));
             this.GitBash.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.GitBash.Name = "GitBash";
             this.GitBash.Size = new System.Drawing.Size(23, 22);
@@ -369,7 +369,7 @@
             // EditSettings
             // 
             this.EditSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EditSettings.Image = ((System.Drawing.Image)(resources.GetObject("EditSettings.Image")));
+//            this.EditSettings.Image = ((System.Drawing.Image)(resources.GetObject("EditSettings.Image")));
             this.EditSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditSettings.Name = "EditSettings";
             this.EditSettings.Size = new System.Drawing.Size(23, 22);
@@ -770,7 +770,7 @@
             // 
             // openToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Image = global::GitUI.Properties.Resources._40;
+            //this.openToolStripMenuItem.Image = global::GitUI.Properties.Resources._40;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -786,7 +786,7 @@
             // 
             // refreshToolStripMenuItem
             // 
-            this.refreshToolStripMenuItem.Image = global::GitUI.Properties.Resources.arrow_refresh;
+           // this.refreshToolStripMenuItem.Image = global::GitUI.Properties.Resources.arrow_refresh;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -832,7 +832,7 @@
             // 
             // gitBashToolStripMenuItem
             // 
-            this.gitBashToolStripMenuItem.Image = global::GitUI.Properties.Resources._26;
+            //this.gitBashToolStripMenuItem.Image = global::GitUI.Properties.Resources._26;
             this.gitBashToolStripMenuItem.Name = "gitBashToolStripMenuItem";
             this.gitBashToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.gitBashToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
@@ -897,7 +897,7 @@
             // 
             // checkoutBranchToolStripMenuItem
             // 
-            this.checkoutBranchToolStripMenuItem.Image = global::GitUI.Properties.Resources._33;
+            //this.checkoutBranchToolStripMenuItem.Image = global::GitUI.Properties.Resources._33;
             this.checkoutBranchToolStripMenuItem.Name = "checkoutBranchToolStripMenuItem";
             this.checkoutBranchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.checkoutBranchToolStripMenuItem.Text = "Checkout branch";
@@ -912,7 +912,7 @@
             // 
             // cherryPickToolStripMenuItem
             // 
-            this.cherryPickToolStripMenuItem.Image = global::GitUI.Properties.Resources._89;
+            //this.cherryPickToolStripMenuItem.Image = global::GitUI.Properties.Resources._89;
             this.cherryPickToolStripMenuItem.Name = "cherryPickToolStripMenuItem";
             this.cherryPickToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.cherryPickToolStripMenuItem.Text = "Cherry pick";
@@ -920,7 +920,7 @@
             // 
             // cloneToolStripMenuItem
             // 
-            this.cloneToolStripMenuItem.Image = global::GitUI.Properties.Resources._46;
+            //this.cloneToolStripMenuItem.Image = global::GitUI.Properties.Resources._46;
             this.cloneToolStripMenuItem.Name = "cloneToolStripMenuItem";
             this.cloneToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.cloneToolStripMenuItem.Text = "Clone repository";
@@ -928,7 +928,7 @@
             // 
             // commitToolStripMenuItem
             // 
-            this.commitToolStripMenuItem.Image = global::GitUI.Properties.Resources._10;
+            //this.commitToolStripMenuItem.Image = global::GitUI.Properties.Resources._10;
             this.commitToolStripMenuItem.Name = "commitToolStripMenuItem";
             this.commitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
             this.commitToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
@@ -937,7 +937,7 @@
             // 
             // branchToolStripMenuItem
             // 
-            this.branchToolStripMenuItem.Image = global::GitUI.Properties.Resources._33;
+            //this.branchToolStripMenuItem.Image = global::GitUI.Properties.Resources._33;
             this.branchToolStripMenuItem.Name = "branchToolStripMenuItem";
             this.branchToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.branchToolStripMenuItem.Text = "Create branch";
@@ -945,7 +945,7 @@
             // 
             // tagToolStripMenuItem
             // 
-            this.tagToolStripMenuItem.Image = global::GitUI.Properties.Resources._352;
+           //this.tagToolStripMenuItem.Image = global::GitUI.Properties.Resources._352;
             this.tagToolStripMenuItem.Name = "tagToolStripMenuItem";
             this.tagToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.tagToolStripMenuItem.Text = "Create tag";
@@ -974,7 +974,7 @@
             // 
             // initNewRepositoryToolStripMenuItem
             // 
-            this.initNewRepositoryToolStripMenuItem.Image = global::GitUI.Properties.Resources._14;
+            //this.initNewRepositoryToolStripMenuItem.Image = global::GitUI.Properties.Resources._14;
             this.initNewRepositoryToolStripMenuItem.Name = "initNewRepositoryToolStripMenuItem";
             this.initNewRepositoryToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.initNewRepositoryToolStripMenuItem.Text = "Init new repository";
@@ -989,7 +989,7 @@
             // 
             // pullToolStripMenuItem
             // 
-            this.pullToolStripMenuItem.Image = global::GitUI.Properties.Resources._4;
+            //this.pullToolStripMenuItem.Image = global::GitUI.Properties.Resources._4;
             this.pullToolStripMenuItem.Name = "pullToolStripMenuItem";
             this.pullToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Down)));
             this.pullToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
@@ -998,7 +998,7 @@
             // 
             // pushToolStripMenuItem
             // 
-            this.pushToolStripMenuItem.Image = global::GitUI.Properties.Resources._3;
+            //this.pushToolStripMenuItem.Image = global::GitUI.Properties.Resources._3;
             this.pushToolStripMenuItem.Name = "pushToolStripMenuItem";
             this.pushToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Up)));
             this.pushToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
@@ -1021,7 +1021,7 @@
             // 
             // stashToolStripMenuItem
             // 
-            this.stashToolStripMenuItem.Image = global::GitUI.Properties.Resources.stash1;
+            //this.stashToolStripMenuItem.Image = global::GitUI.Properties.Resources.stash1;
             this.stashToolStripMenuItem.Name = "stashToolStripMenuItem";
             this.stashToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.stashToolStripMenuItem.Text = "Stash changes";
@@ -1068,14 +1068,14 @@
             this.PuTTYToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startAuthenticationAgentToolStripMenuItem,
             this.generateOrImportKeyToolStripMenuItem});
-            this.PuTTYToolStripMenuItem.Image = global::GitUI.Properties.Resources.putty;
+            //this.PuTTYToolStripMenuItem.Image = global::GitUI.Properties.Resources.putty;
             this.PuTTYToolStripMenuItem.Name = "PuTTYToolStripMenuItem";
             this.PuTTYToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.PuTTYToolStripMenuItem.Text = "PuTTY";
             // 
             // startAuthenticationAgentToolStripMenuItem
             // 
-            this.startAuthenticationAgentToolStripMenuItem.Image = global::GitUI.Properties.Resources.pageant;
+            //this.startAuthenticationAgentToolStripMenuItem.Image = global::GitUI.Properties.Resources.pageant;
             this.startAuthenticationAgentToolStripMenuItem.Name = "startAuthenticationAgentToolStripMenuItem";
             this.startAuthenticationAgentToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.startAuthenticationAgentToolStripMenuItem.Text = "Start authentication agent";
@@ -1083,7 +1083,7 @@
             // 
             // generateOrImportKeyToolStripMenuItem
             // 
-            this.generateOrImportKeyToolStripMenuItem.Image = global::GitUI.Properties.Resources.puttygen;
+            //this.generateOrImportKeyToolStripMenuItem.Image = global::GitUI.Properties.Resources.puttygen;
             this.generateOrImportKeyToolStripMenuItem.Name = "generateOrImportKeyToolStripMenuItem";
             this.generateOrImportKeyToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.generateOrImportKeyToolStripMenuItem.Text = "Generate or import key";
@@ -1225,7 +1225,7 @@
             this.gitMaintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.compressGitDatabaseToolStripMenuItem,
             this.verifyGitDatabaseToolStripMenuItem});
-            this.gitMaintenanceToolStripMenuItem.Image = global::GitUI.Properties.Resources._82;
+            //this.gitMaintenanceToolStripMenuItem.Image = global::GitUI.Properties.Resources._82;
             this.gitMaintenanceToolStripMenuItem.Name = "gitMaintenanceToolStripMenuItem";
             this.gitMaintenanceToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.gitMaintenanceToolStripMenuItem.Text = "Git maintenance";
@@ -1270,7 +1270,7 @@
             // 
             // settingsToolStripMenuItem2
             // 
-            this.settingsToolStripMenuItem2.Image = global::GitUI.Properties.Resources._71;
+            //this.settingsToolStripMenuItem2.Image = global::GitUI.Properties.Resources._71;
             this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
             this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(161, 22);
             this.settingsToolStripMenuItem2.Text = "Settings";
@@ -1293,7 +1293,7 @@
             // 
             // commitcountPerUserToolStripMenuItem
             // 
-            this.commitcountPerUserToolStripMenuItem.Image = global::GitUI.Properties.Resources._53;
+            //this.commitcountPerUserToolStripMenuItem.Image = global::GitUI.Properties.Resources._53;
             this.commitcountPerUserToolStripMenuItem.Name = "commitcountPerUserToolStripMenuItem";
             this.commitcountPerUserToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.commitcountPerUserToolStripMenuItem.Text = "Commits per user";
@@ -1301,7 +1301,7 @@
             // 
             // gitcommandLogToolStripMenuItem
             // 
-            this.gitcommandLogToolStripMenuItem.Image = global::GitUI.Properties.Resources._21;
+           // this.gitcommandLogToolStripMenuItem.Image = global::GitUI.Properties.Resources._21;
             this.gitcommandLogToolStripMenuItem.Name = "gitcommandLogToolStripMenuItem";
             this.gitcommandLogToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.gitcommandLogToolStripMenuItem.Text = "Gitcommand log";
@@ -1340,7 +1340,7 @@
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Image = global::GitUI.Properties.Resources._49;
+            //this.aboutToolStripMenuItem.Image = global::GitUI.Properties.Resources._49;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.aboutToolStripMenuItem.Text = "About";
@@ -1362,7 +1362,7 @@
             this.ClientSize = new System.Drawing.Size(796, 573);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+////            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBrowse";
             this.Text = "Git Extensions";
             this.Load += new System.EventHandler(this.Browse_Load);

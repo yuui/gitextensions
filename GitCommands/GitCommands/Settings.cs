@@ -10,6 +10,28 @@ namespace GitCommands
 {
     public class Settings
     {
+		public static char PathSeperator = '/';
+		public static char PathSeperatorWrong = '\\';
+		
+		public static string GitCmd
+		{
+			get
+			{
+				return "git";
+			}
+		}
+		
+		public static string FixPath(string path)
+        {
+            path = path.Trim();
+
+            if (path.StartsWith(PathSeperator.ToString()+PathSeperator.ToString()))
+                return path;
+
+            return path.Replace(PathSeperatorWrong, PathSeperator);
+			return path;
+		}
+		
         private static int revisionGraphWidth = 6;
         public static int RevisionGraphWidth
         {
@@ -346,10 +368,10 @@ namespace GitCommands
             set
             {
                 gitDir = value;
-                if (gitDir.Length > 0 && gitDir[gitDir.Length - 1] != '\\')
-                    gitDir += "\\";
-                gitDir = gitDir.Replace("\\\\", "\\");
-                gitDir = gitDir.Replace("//", "/");
+                if (gitDir.Length > 0 && gitDir[gitDir.Length - 1] != PathSeperator)
+                    gitDir += PathSeperator;
+                gitDir = gitDir.Replace(PathSeperator.ToString()+PathSeperator.ToString(), PathSeperator.ToString());
+                gitDir = gitDir.Replace(PathSeperator.ToString()+PathSeperator.ToString(), PathSeperator.ToString());
 
             }
         }
@@ -364,8 +386,8 @@ namespace GitCommands
             set
             {
                 gitBinDir = value;
-                if (gitBinDir.Length > 0 && gitBinDir[gitBinDir.Length - 1] != '\\')
-                    gitBinDir += "\\";
+                if (gitBinDir.Length > 0 && gitBinDir[gitBinDir.Length - 1] != PathSeperator)
+                    gitBinDir += PathSeperator;
 
                 if (!string.IsNullOrEmpty(gitBinDir))
                     Environment.SetEnvironmentVariable("path", Environment.GetEnvironmentVariable("path", EnvironmentVariableTarget.Process) + ";" + gitBinDir, EnvironmentVariableTarget.Process);
@@ -396,13 +418,13 @@ namespace GitCommands
             if (string.IsNullOrEmpty(dir))
                 return false;
 
-            if (Directory.Exists(dir + "\\" + ".git"))
+            if (Directory.Exists(dir + PathSeperator + ".git"))
                 return true;
 
             if (!dir.Contains(".git") &&
-                Directory.Exists(dir + "\\" + "info") &&
-                Directory.Exists(dir + "\\" + "objects") &&
-                Directory.Exists(dir + "\\" + "refs")
+                Directory.Exists(dir + PathSeperator + "info") &&
+                Directory.Exists(dir + PathSeperator + "objects") &&
+                Directory.Exists(dir + PathSeperator + "refs")
                 )
                 return true;
 
@@ -411,7 +433,7 @@ namespace GitCommands
 
         public static bool IsBareRepository()
         {
-            if (Directory.Exists(WorkingDir + "\\" + ".git"))
+            if (Directory.Exists(WorkingDir + PathSeperator + ".git"))
                 return false;
 
             return true;
@@ -424,8 +446,8 @@ namespace GitCommands
             if (Directory.Exists(workingDir + ".git"))
                 return workingDir + ".git";
 
-            if (Directory.Exists(workingDir + "\\" + ".git"))
-                return workingDir + "\\" + ".git";
+            if (Directory.Exists(workingDir + PathSeperator + ".git"))
+                return workingDir + PathSeperator + ".git";
 
             return WorkingDir;
         }

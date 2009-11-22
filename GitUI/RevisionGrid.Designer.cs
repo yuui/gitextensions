@@ -183,7 +183,7 @@
             // 
             // createTagToolStripMenuItem
             // 
-            this.createTagToolStripMenuItem.Image = global::GitUI.Properties.Resources._33;
+            //this.createTagToolStripMenuItem.Image = global::GitUI.Properties.Resources._33;
             this.createTagToolStripMenuItem.Name = "createTagToolStripMenuItem";
             this.createTagToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
             this.createTagToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
@@ -199,7 +199,7 @@
             // 
             // createNewBranchToolStripMenuItem
             // 
-            this.createNewBranchToolStripMenuItem.Image = global::GitUI.Properties.Resources._35;
+            //this.createNewBranchToolStripMenuItem.Image = global::GitUI.Properties.Resources._35;
             this.createNewBranchToolStripMenuItem.Name = "createNewBranchToolStripMenuItem";
             this.createNewBranchToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.createNewBranchToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
@@ -367,7 +367,7 @@
             // Error
             // 
             this.Error.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Error.Image = global::GitUI.Properties.Resources.error;
+//            this.Error.Image = global::GitUI.Properties.Resources.error;
             this.Error.Location = new System.Drawing.Point(0, 0);
             this.Error.Name = "Error";
             this.Error.Size = new System.Drawing.Size(585, 204);
@@ -379,7 +379,7 @@
             // 
             this.Loading.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.Loading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Loading.Image = global::GitUI.Properties.Resources.loadingpanel;
+//            this.Loading.Image = global::GitUI.Properties.Resources.loadingpanel;
             this.Loading.Location = new System.Drawing.Point(0, 0);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(585, 204);

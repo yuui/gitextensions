@@ -47,8 +47,8 @@
             // Loading
             // 
             this.Loading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Loading.Image = global::GitUI.Properties.Resources.loadingpanel;
-            this.Loading.InitialImage = global::GitUI.Properties.Resources.loadingpanel;
+//            this.Loading.Image = global::GitUI.Properties.Resources.loadingpanel;
+//            this.Loading.InitialImage = global::GitUI.Properties.Resources.loadingpanel;
             this.Loading.Location = new System.Drawing.Point(0, 0);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(367, 317);
@@ -63,7 +63,7 @@
             this.ClientSize = new System.Drawing.Size(367, 317);
             this.Controls.Add(this.Loading);
             this.Controls.Add(this.CommitCount);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCommitCount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Commit count";

@@ -33,7 +33,7 @@ namespace GitUI
 
         private void Mergetool_Click(object sender, EventArgs e)
         {
-            GitCommands.GitCommands.RunRealCmd(GitCommands.Settings.GitDir + "git.cmd", "mergetool");
+            GitCommands.GitCommands.RunRealCmd(Settings.GitCmd, "mergetool");
 
             if (MessageBox.Show("Resolved all conflicts? Commit?", "Conflicts solved", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -316,17 +316,17 @@ namespace GitUI
 
         private void Merge_CheckedChanged(object sender, EventArgs e)
         {
-            PullImage.BackgroundImage = GitUI.Properties.Resources.merge;
+//            PullImage.BackgroundImage = GitUI.Properties.Resources.merge;
         }
 
         private void Rebase_CheckedChanged(object sender, EventArgs e)
         {
-            PullImage.BackgroundImage = GitUI.Properties.Resources.Rebase;
+//            PullImage.BackgroundImage = GitUI.Properties.Resources.Rebase;
         }
 
         private void Fetch_CheckedChanged(object sender, EventArgs e)
         {
-            PullImage.BackgroundImage = GitUI.Properties.Resources.fetch;
+//            PullImage.BackgroundImage = GitUI.Properties.Resources.fetch;
         }
 
         private void PullSource_SelectedIndexChanged(object sender, EventArgs e)

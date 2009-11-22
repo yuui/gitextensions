@@ -65,7 +65,7 @@
             // 
             // LoadSSHKey
             // 
-            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
+//            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
             this.LoadSSHKey.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoadSSHKey.Location = new System.Drawing.Point(443, 43);
             this.LoadSSHKey.Name = "LoadSSHKey";
@@ -85,7 +85,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoadSSHKey);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLoadPuttySSHKey";

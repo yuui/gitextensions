@@ -18,7 +18,7 @@ namespace GitUI
 
         private void FormChangeLog1_Load(object sender, EventArgs e)
         {
-            ChangeLog.Text = Resources.ChangeLog;
+//            ChangeLog.Text = Resources.ChangeLog;
         }
     }
 }

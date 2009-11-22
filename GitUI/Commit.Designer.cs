@@ -244,7 +244,7 @@
             this.Loading.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.Loading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Loading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Loading.Image = global::GitUI.Properties.Resources.loadingpanel;
+//            this.Loading.Image = global::GitUI.Properties.Resources.loadingpanel;
             this.Loading.Location = new System.Drawing.Point(0, 0);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(389, 257);
@@ -349,7 +349,7 @@
             // 
             // UnstageFiles
             // 
-            this.UnstageFiles.Image = global::GitUI.Properties.Resources._3;
+//            this.UnstageFiles.Image = global::GitUI.Properties.Resources._3;
             this.UnstageFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.UnstageFiles.Location = new System.Drawing.Point(124, 3);
             this.UnstageFiles.Name = "UnstageFiles";
@@ -362,7 +362,7 @@
             // 
             // AddFiles
             // 
-            this.AddFiles.Image = global::GitUI.Properties.Resources._4;
+//            this.AddFiles.Image = global::GitUI.Properties.Resources._4;
             this.AddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AddFiles.Location = new System.Drawing.Point(263, 3);
             this.AddFiles.Name = "AddFiles";
@@ -714,7 +714,7 @@
             this.CancelButton = this.Cancel;
             this.ClientSize = new System.Drawing.Size(895, 648);
             this.Controls.Add(this.splitContainer1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+////            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormCommit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

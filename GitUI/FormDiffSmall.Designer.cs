@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 529);
             this.Controls.Add(this.splitContainer2);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDiffSmall";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Diff";

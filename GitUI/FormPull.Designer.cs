@@ -298,7 +298,7 @@
             // PullImage
             // 
             this.PullImage.BackColor = System.Drawing.Color.White;
-            this.PullImage.BackgroundImage = global::GitUI.Properties.Resources.merge;
+//            this.PullImage.BackgroundImage = global::GitUI.Properties.Resources.merge;
             this.PullImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.PullImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PullImage.Location = new System.Drawing.Point(0, 0);
@@ -309,7 +309,7 @@
             // 
             // LoadSSHKey
             // 
-            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
+//            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
             this.LoadSSHKey.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoadSSHKey.Location = new System.Drawing.Point(320, 256);
             this.LoadSSHKey.Name = "LoadSSHKey";
@@ -327,7 +327,7 @@
             this.ClientSize = new System.Drawing.Size(639, 290);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPull";

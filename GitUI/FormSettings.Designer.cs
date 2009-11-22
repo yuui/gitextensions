@@ -148,8 +148,6 @@
             this.Putty = new System.Windows.Forms.RadioButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Ok = new System.Windows.Forms.Button();
-            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
-            this.directorySearcher2 = new System.DirectoryServices.DirectorySearcher();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.LocalSettings.SuspendLayout();
@@ -253,7 +251,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::GitUI.Properties.Resources.error;
+//            this.pictureBox3.Image = global::GitUI.Properties.Resources.error;
             this.pictureBox3.Location = new System.Drawing.Point(3, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(54, 50);
@@ -1138,7 +1136,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GitUI.Properties.Resources.error;
+//            this.pictureBox1.Image = global::GitUI.Properties.Resources.error;
             this.pictureBox1.Location = new System.Drawing.Point(3, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(54, 50);
@@ -1467,7 +1465,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(418, 41);
             this.label18.TabIndex = 2;
-            this.label18.Text = resources.GetString("label18.Text");
+            //this.label18.Text = resources.GetString("label18.Text");
             // 
             // OpenSSH
             // 
@@ -1522,18 +1520,6 @@
             this.Ok.UseVisualStyleBackColor = true;
             this.Ok.Click += new System.EventHandler(this.Ok_Click);
             // 
-            // directorySearcher1
-            // 
-            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            // 
-            // directorySearcher2
-            // 
-            this.directorySearcher2.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher2.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            this.directorySearcher2.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1546,7 +1532,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::GitUI.Properties.Resources.error;
+//            this.pictureBox2.Image = global::GitUI.Properties.Resources.error;
             this.pictureBox2.Location = new System.Drawing.Point(3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(54, 50);
@@ -1560,7 +1546,7 @@
             this.ClientSize = new System.Drawing.Size(718, 381);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormSettings";
@@ -1663,8 +1649,6 @@
         private System.Windows.Forms.TextBox OtherSsh;
         private System.Windows.Forms.Button OtherSshBrowse;
         private System.Windows.Forms.RadioButton Other;
-        private System.DirectoryServices.DirectorySearcher directorySearcher1;
-        private System.DirectoryServices.DirectorySearcher directorySearcher2;
         private System.Windows.Forms.Button SshConfig;
         private System.Windows.Forms.CheckBox AutostartPageant;
         private System.Windows.Forms.Label PathToKDiff3;

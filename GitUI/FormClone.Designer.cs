@@ -206,7 +206,7 @@
             // 
             // LoadSSHKey
             // 
-            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
+//            this.LoadSSHKey.Image = global::GitUI.Properties.Resources.putty;
             this.LoadSSHKey.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoadSSHKey.Location = new System.Drawing.Point(0, 2);
             this.LoadSSHKey.Name = "LoadSSHKey";
@@ -255,7 +255,7 @@
             this.ClientSize = new System.Drawing.Size(504, 238);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+//            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormClone";

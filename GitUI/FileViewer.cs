@@ -15,10 +15,11 @@ namespace GitUI
         public FileViewer()
         {
             InitializeComponent();
-            TextEditor.ActiveTextAreaControl.TextArea.KeyDown += new KeyEventHandler(TextArea_KeyUp);
+			TextEditor.Multiline = true;
+            //TextEditor.ActiveTextAreaControl.TextArea.KeyDown += new KeyEventHandler(TextArea_KeyUp);
 
         }
-
+/*
         void TextArea_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
@@ -30,20 +31,20 @@ namespace GitUI
             if (e.KeyCode == Keys.F3)
                 findAndReplaceForm.FindNext(true, false, "Text not found");
 
-        }
+        }*/
 
         public int ScrollPos 
         {
             get
             {
-                return TextEditor.ActiveTextAreaControl.VScrollBar.Value;
+                return 5;// TextEditor.ActiveTextAreaControl.VScrollBar.Value;
             }
             set
             {
-                if (TextEditor.ActiveTextAreaControl.VScrollBar.Maximum > value)
-                    TextEditor.ActiveTextAreaControl.VScrollBar.Value = value;
-                else
-                    TextEditor.ActiveTextAreaControl.VScrollBar.Value = TextEditor.ActiveTextAreaControl.VScrollBar.Maximum;
+                //if (TextEditor.ActiveTextAreaControl.VScrollBar.Maximum > value)
+                //    TextEditor.ActiveTextAreaControl.VScrollBar.Value = value;
+                //else
+                //    TextEditor.ActiveTextAreaControl.VScrollBar.Value = TextEditor.ActiveTextAreaControl.VScrollBar.Maximum;
             }
         }
 
@@ -58,11 +59,11 @@ namespace GitUI
             }
         }
 
-        FindAndReplaceForm findAndReplaceForm = new FindAndReplaceForm();
+        //FindAndReplaceForm findAndReplaceForm = new FindAndReplaceForm();
 
         public void Find()
         {
-            findAndReplaceForm.ShowFor(TextEditor, false);
+            //findAndReplaceForm.ShowFor(TextEditor, false);
         }
 
         public void ViewFile(string fileName)
@@ -139,7 +140,7 @@ namespace GitUI
                         PictureBox.Visible = false;
                         TextEditor.Visible = true;
                         TextEditor.Text = "Binary file: " + fileName;
-                        TextEditor.Refresh();
+                       // TextEditor.Refresh();
                     }
                     else
                     {
@@ -147,8 +148,8 @@ namespace GitUI
                         PictureBox.Visible = false;
                         TextEditor.Visible = true;
 
-                        if (File.Exists(GitCommands.Settings.WorkingDir + fileName))
-                            TextEditor.LoadFile(GitCommands.Settings.WorkingDir + fileName);
+                        //if (File.Exists(GitCommands.Settings.WorkingDir + fileName))
+                        //    TextEditor.LoadFile(GitCommands.Settings.WorkingDir + fileName);
                     }
             }
             catch
@@ -163,12 +164,12 @@ namespace GitUI
             PictureBox.Visible = false;
             TextEditor.Visible = true;
 
-            TextEditor.SetHighlighting("Patch");
+            //TextEditor.SetHighlighting("Patch");
             TextEditor.Text = GitCommands.GitCommands.GetCurrentChanges(fileName, staged);
             
-            AddPatchHighlighting();
+            //AddPatchHighlighting();
 
-            TextEditor.Refresh();
+            //TextEditor.Refresh();
         }
 
         public void ViewPatch(string text)
@@ -177,14 +178,14 @@ namespace GitUI
             PictureBox.Visible = false;
             TextEditor.Visible = true;
 
-            TextEditor.SetHighlighting("Patch");
+           // TextEditor.SetHighlighting("Patch");
             TextEditor.Text = text;
 
-            AddPatchHighlighting();
+            //AddPatchHighlighting();
 
-            TextEditor.Refresh();
+            //TextEditor.Refresh();
         }
-
+/*
         private void AddPatchHighlighting()
         {
             //DIFF HIGHLIGHTING!
@@ -247,17 +248,17 @@ namespace GitUI
             }
             //END
         }
-
+*/
         public void ViewText(string fileName, string text)
         {
             ClearImage();
             PictureBox.Visible = false;
             TextEditor.Visible = true;
 
-            EditorOptions.SetSyntax(TextEditor, fileName);
+            //EditorOptions.SetSyntax(TextEditor, fileName);
 
             TextEditor.Text = text;
-            TextEditor.Refresh();
+            //TextEditor.Refresh();
         }
 
         public bool IsBinaryFile(string fileName)
@@ -315,7 +316,7 @@ namespace GitUI
                     else
                     {
                         ClearImage();
-                        EditorOptions.SetSyntax(TextEditor, fileName);
+                        //EditorOptions.SetSyntax(TextEditor, fileName);
 
                         TextEditor.Text = GitCommands.GitCommands.GetFileRevisionText(fileName, guid);
                     }
@@ -324,7 +325,7 @@ namespace GitUI
             {
                 TextEditor.Text = "Unsupported file";
             }
-            TextEditor.Refresh();
+            //TextEditor.Refresh();
         }
 
         public void ViewGitItem(string fileName, string guid)
@@ -377,7 +378,7 @@ namespace GitUI
                     else
                     {
                         ClearImage();
-                        EditorOptions.SetSyntax(TextEditor, fileName);
+                        //EditorOptions.SetSyntax(TextEditor, fileName);
 
                         TextEditor.Text = GitCommands.GitCommands.GetFileText(guid);
                     }
@@ -386,7 +387,7 @@ namespace GitUI
             {
                 TextEditor.Text = "Unsupported file";
             }
-            TextEditor.Refresh();
+            //TextEditor.Refresh();
         }
 
         private void TextEditor_KeyPress(object sender, KeyPressEventArgs e)

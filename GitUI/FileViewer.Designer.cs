@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.PictureBox = new System.Windows.Forms.PictureBox();
-            this.TextEditor = new ICSharpCode.TextEditor.TextEditorControl();
+            this.TextEditor = new System.Windows.Forms.TextBox();
             this.ContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
@@ -54,7 +54,7 @@
             // 
             this.TextEditor.ContextMenuStrip = this.ContextMenu;
             this.TextEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextEditor.IsReadOnly = false;
+            //this.TextEditor.IsReadOnly = false;
             this.TextEditor.Location = new System.Drawing.Point(0, 0);
             this.TextEditor.Name = "TextEditor";
             this.TextEditor.Size = new System.Drawing.Size(649, 449);
@@ -94,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox PictureBox;
-        private ICSharpCode.TextEditor.TextEditorControl TextEditor;
+		private System.Windows.Forms.TextBox TextEditor;
         private System.Windows.Forms.ContextMenuStrip ContextMenu;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
     }
