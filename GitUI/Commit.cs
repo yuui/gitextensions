@@ -171,7 +171,7 @@ namespace GitUI
 
             try
             {
-                using (StreamWriter textWriter = new StreamWriter(GitCommands.Settings.WorkingDirGitDir() + "\\COMMITMESSAGE", false, Settings.Encoding))
+                using (StreamWriter textWriter = new StreamWriter(GitCommands.Settings.WorkingDirGitDir() + GitCommands.Settings.PathSeperator + "COMMITMESSAGE", false, Settings.Encoding))
                 {
                     int lineNumber = 0;
                     foreach (string line in Message.Text.Split('\n'))
@@ -521,8 +521,8 @@ namespace GitUI
             this.Text = "Commit (" + GitCommands.Settings.WorkingDir + ")";
             Message.Text = GitCommands.GitCommands.GetMergeMessage();
 
-            if (string.IsNullOrEmpty(Message.Text) && File.Exists(GitCommands.Settings.WorkingDirGitDir() + "\\COMMITMESSAGE"))
-                Message.Text = File.ReadAllText(GitCommands.Settings.WorkingDirGitDir() + "\\COMMITMESSAGE", Settings.Encoding);
+            if (string.IsNullOrEmpty(Message.Text) && File.Exists(GitCommands.Settings.WorkingDirGitDir() + GitCommands.Settings.PathSeperator + "COMMITMESSAGE"))
+                Message.Text = File.ReadAllText(GitCommands.Settings.WorkingDirGitDir() + GitCommands.Settings.PathSeperator + "COMMITMESSAGE", Settings.Encoding);
 
         }
 
@@ -545,7 +545,7 @@ namespace GitUI
         {
             if (!string.IsNullOrEmpty(Message.Text))
             {
-                using (StreamWriter textWriter = new StreamWriter(GitCommands.Settings.WorkingDirGitDir() + "\\COMMITMESSAGE", false))
+                using (StreamWriter textWriter = new StreamWriter(GitCommands.Settings.WorkingDirGitDir() + GitCommands.Settings.PathSeperator + "COMMITMESSAGE", false))
                 {
                     textWriter.Write(Message.Text);
                     textWriter.Close();
@@ -553,7 +553,7 @@ namespace GitUI
             }
             else
             {
-                File.Delete(GitCommands.Settings.WorkingDirGitDir() + "\\COMMITMESSAGE");
+                File.Delete(GitCommands.Settings.WorkingDirGitDir() + GitCommands.Settings.PathSeperator + "COMMITMESSAGE");
             }
         }
 
