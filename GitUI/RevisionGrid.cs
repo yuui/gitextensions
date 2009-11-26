@@ -169,7 +169,7 @@ namespace GitUI
                 initialLoad = true;
                 graphWidth = 0;
 
-                LastScrollPos = Revisions.FirstDisplayedScrollingRowIndex;
+                LastScrollPos = GetFirstDisplayedScrollingRowIndex();
                 LastSelectedRows.Clear();
 
                 foreach (DataGridViewRow row in Revisions.SelectedRows)
@@ -270,7 +270,7 @@ namespace GitUI
             }
 
             int numberOfVisibleRows = Revisions.DisplayedRowCount(true) + 1;
-            int firstVisibleRow = Revisions.FirstDisplayedScrollingRowIndex;
+            int firstVisibleRow = GetFirstDisplayedScrollingRowIndex();
 
             if (numberOfVisibleRows < 1)
                 numberOfVisibleRows = 20;
@@ -390,6 +390,11 @@ namespace GitUI
             }
         }
 
+		private int GetFirstDisplayedScrollingRowIndex()
+		{
+			return Revisions.VerticalScrollingOffset / Revisions.RowTemplate.Height;
+		}
+		
         private bool skipFirst = false;
         private int graphWidth = 0;
         private void DrawVisibleGraphPart()
@@ -399,7 +404,7 @@ namespace GitUI
             int width = Settings.RevisionGraphWidth;
             int y = -height;
             int numberOfVisibleRows = Revisions.DisplayedRowCount(true);
-            int firstVisibleRow = Revisions.FirstDisplayedScrollingRowIndex;
+            int firstVisibleRow = GetFirstDisplayedScrollingRowIndex();
             numberOfVisibleRows = Math.Min(/*20*/numberOfVisibleRows, RevisionList.Count);
             if (firstVisibleRow < 1)
             {
@@ -633,7 +638,7 @@ namespace GitUI
 
                     if (e.ColumnIndex == 0)
                     {
-                        int top = ((e.RowIndex - Revisions.FirstDisplayedScrollingRowIndex) * Revisions.RowTemplate.Height);
+                        int top = ((e.RowIndex - GetFirstDisplayedScrollingRowIndex()) * Revisions.RowTemplate.Height);
                         if (skipFirst)
                             top += Revisions.RowTemplate.Height;
 
