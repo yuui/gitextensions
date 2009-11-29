@@ -35,16 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.TextEditor, Version=4.0.0.3889, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Bin\ICSharpCode.TextEditor.dll</HintPath>
-    </Reference>
     <Reference Include="SpellChecker, Version=2.1.7.34261, Culture=neutral, PublicKeyToken=318b389f0db66e46">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Bin\SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Windows.Forms" />

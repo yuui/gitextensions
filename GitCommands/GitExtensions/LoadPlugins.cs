@@ -13,6 +13,7 @@ namespace GitExtensions
     {
         public static void Load()
         {
+			/*
             FileInfo file = new FileInfo(Application.ExecutablePath);
             FileInfo [] plugins = file.Directory.GetFiles("*.dll", SearchOption.AllDirectories);
 
@@ -39,7 +40,7 @@ namespace GitExtensions
                 catch
                 {
                 }
-            }
+            }*/
         }
     }
 }

@@ -127,8 +127,6 @@
             this.Revisions.DoubleClick += new System.EventHandler(this.Revisions_DoubleClick);
             this.Revisions.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Revisions_CellMouseDown);
             this.Revisions.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Revisions_KeyUp);
-            this.Revisions.CellContextMenuStripChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Revisions_CellContextMenuStripChanged);
-            this.Revisions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Revisions_CellContentClick);
             // 
             // Graph
             // 
@@ -195,7 +193,6 @@
             this.deleteTagToolStripMenuItem.Name = "deleteTagToolStripMenuItem";
             this.deleteTagToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.deleteTagToolStripMenuItem.Text = "Delete tag";
-            this.deleteTagToolStripMenuItem.Click += new System.EventHandler(this.deleteTagToolStripMenuItem_Click);
             // 
             // createNewBranchToolStripMenuItem
             // 
@@ -211,7 +208,6 @@
             this.deleteBranchToolStripMenuItem.Name = "deleteBranchToolStripMenuItem";
             this.deleteBranchToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.deleteBranchToolStripMenuItem.Text = "Delete branch";
-            this.deleteBranchToolStripMenuItem.Click += new System.EventHandler(this.deleteBranchToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -230,7 +226,6 @@
             this.checkoutBranchToolStripMenuItem.Name = "checkoutBranchToolStripMenuItem";
             this.checkoutBranchToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.checkoutBranchToolStripMenuItem.Text = "Checkout branch";
-            this.checkoutBranchToolStripMenuItem.Click += new System.EventHandler(this.checkoutBranchToolStripMenuItem_Click);
             // 
             // checkoutRevisionToolStripMenuItem
             // 
@@ -362,7 +357,6 @@
             this.label1.Size = new System.Drawing.Size(315, 104);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Error
             // 
@@ -402,7 +396,6 @@
             this.Controls.Add(this.Revisions);
             this.Name = "RevisionGrid";
             this.Size = new System.Drawing.Size(585, 204);
-            this.Load += new System.EventHandler(this.RevisionGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Revisions)).EndInit();
             this.CreateTag.ResumeLayout(false);
             this.NoCommits.ResumeLayout(false);

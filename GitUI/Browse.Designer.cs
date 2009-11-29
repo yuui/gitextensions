@@ -201,7 +201,6 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.ToolStrip);
-            this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             // 
             // splitContainer2.Panel2
             // 
@@ -211,7 +210,6 @@
             this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.TabIndex = 2;
             this.splitContainer2.TabStop = false;
-            this.splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer2_SplitterMoved);
             // 
             // ToolStrip
             // 
@@ -236,7 +234,6 @@
             this.ToolStrip.Size = new System.Drawing.Size(796, 25);
             this.ToolStrip.TabIndex = 4;
             this.ToolStrip.Text = "toolStrip1";
-            this.ToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ToolStrip_ItemClicked);
             // 
             // RefreshButton
             // 
@@ -396,7 +393,6 @@
             this.toolStripTextBoxFilter.Size = new System.Drawing.Size(120, 25);
             this.toolStripTextBoxFilter.Leave += new System.EventHandler(this.toolStripTextBoxFilter_Leave);
             this.toolStripTextBoxFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBoxFilter_KeyPress);
-            this.toolStripTextBoxFilter.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             // 
             // NoGit
             // 
@@ -407,7 +403,6 @@
             this.NoGit.Name = "NoGit";
             this.NoGit.Size = new System.Drawing.Size(796, 520);
             this.NoGit.TabIndex = 1;
-            this.NoGit.Paint += new System.Windows.Forms.PaintEventHandler(this.NoGit_Paint);
             // 
             // splitContainer5
             // 
@@ -766,7 +761,6 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             this.fileToolStripMenuItem.DropDownOpening += new System.EventHandler(this.fileToolStripMenuItem_DropDownOpening);
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
@@ -1179,7 +1173,6 @@
             this.openSubmoduleToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
             this.openSubmoduleToolStripMenuItem.Text = "Browse submodule";
             this.openSubmoduleToolStripMenuItem.DropDownOpening += new System.EventHandler(this.openSubmoduleToolStripMenuItem_DropDownOpening);
-            this.openSubmoduleToolStripMenuItem.Click += new System.EventHandler(this.openSubmoduleToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
@@ -1366,7 +1359,6 @@
             this.Name = "FormBrowse";
             this.Text = "Git Extensions";
             this.Load += new System.EventHandler(this.Browse_Load);
-            this.Shown += new System.EventHandler(this.FormBrowse_Shown);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormBrowse_FormClosing);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();

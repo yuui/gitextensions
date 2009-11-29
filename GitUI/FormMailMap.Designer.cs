@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMailMap));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.MailMapText = new ICSharpCode.TextEditor.TextEditorControl();
+            this.MailMapText = new FileViewer();
             this.Save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,7 +59,7 @@
             // MailMapText
             // 
             this.MailMapText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MailMapText.IsReadOnly = false;
+            //this.MailMapText.IsReadOnly = false;
             this.MailMapText.Location = new System.Drawing.Point(0, 0);
             this.MailMapText.Name = "MailMapText";
             this.MailMapText.Size = new System.Drawing.Size(381, 474);
@@ -106,7 +106,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private ICSharpCode.TextEditor.TextEditorControl MailMapText;
+        private FileViewer MailMapText;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Label label1;
     }

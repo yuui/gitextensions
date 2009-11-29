@@ -106,7 +106,7 @@ namespace GitUI
 
         public void SetSelectedRevision(GitRevision revision)
         {
-            /*
+            
             Revisions.ClearSelection();
 
             if (revision != null)
@@ -117,7 +117,7 @@ namespace GitUI
                             row.Selected = true;
                     }
                 }
-            Revisions.Select();*/
+            Revisions.Select();
         }
 
         void Revisions_SelectionChanged(object sender, EventArgs e)
@@ -692,19 +692,6 @@ namespace GitUI
                 GitUICommands.Instance.StartCompareRevisionsDialog();
         }
 
-        private void Revisions_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        protected override void InitLayout()
-        {
-        }
-
-        private void RevisionGrid_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void Revisions_Scroll(object sender, ScrollEventArgs e)
         {
@@ -766,11 +753,6 @@ namespace GitUI
                 RefreshRevisions();
                 OnChangedCurrentBranch();
             }
-
-        }
-
-        private void Revisions_CellContextMenuStripChanged(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
 
@@ -943,10 +925,7 @@ namespace GitUI
             ForceRefreshRevisions();
             OnChangedCurrentBranch();
         }
-        private void deleteTagToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void checkoutRevisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -966,21 +945,6 @@ namespace GitUI
             Settings.OrderRevisionByDate = !orderRevisionsByDateToolStripMenuItem.Checked;
             orderRevisionsByDateToolStripMenuItem.Checked = Settings.OrderRevisionByDate;
             this.ForceRefreshRevisions();
-        }
-
-        private void deleteBranchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkoutBranchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
     }

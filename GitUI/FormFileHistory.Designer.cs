@@ -39,8 +39,8 @@
             this.Diff = new GitUI.FileViewer();
             this.Blame = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.BlameCommitter = new ICSharpCode.TextEditor.TextEditorControl();
-            this.BlameFile = new ICSharpCode.TextEditor.TextEditorControl();
+            this.BlameCommitter = new FileViewer();
+            this.BlameFile = new FileViewer();
             this.gitItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gitBlameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subItemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -178,7 +178,7 @@
             // BlameCommitter
             // 
             this.BlameCommitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BlameCommitter.IsReadOnly = false;
+            //this.BlameCommitter.IsReadOnly = false;
             this.BlameCommitter.Location = new System.Drawing.Point(0, 0);
             this.BlameCommitter.Name = "BlameCommitter";
             this.BlameCommitter.Size = new System.Drawing.Size(245, 302);
@@ -187,7 +187,7 @@
             // BlameFile
             // 
             this.BlameFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BlameFile.IsReadOnly = false;
+            //this.BlameFile.IsReadOnly = false;
             this.BlameFile.Location = new System.Drawing.Point(0, 0);
             this.BlameFile.Name = "BlameFile";
             this.BlameFile.Size = new System.Drawing.Size(489, 302);
@@ -260,8 +260,8 @@
         private FileViewer View;
         private FileViewer Diff;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private ICSharpCode.TextEditor.TextEditorControl BlameFile;
-        private ICSharpCode.TextEditor.TextEditorControl BlameCommitter;
+        private FileViewer BlameFile;
+        private FileViewer BlameCommitter;
         private RevisionGrid FileChanges;
     }
 }

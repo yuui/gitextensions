@@ -26,7 +26,8 @@ namespace GitUI
             Loading.Visible = true;
             cmd.Exited += new EventHandler(cmd_Exited);
             //cmd.CmdStartProcess(GitCommand(Settings.GitCmd, "shortlog -s -n");
-            cmd.CmdStartProcess("cmd.exe", "/c \"\"" + GitCommands.Settings.GitDir + "git.cmd\" log --all --pretty=short | \"" + GitCommands.Settings.GitDir + "git.cmd\" shortlog --all -s -n\"");
+            //cmd.CmdStartProcess("cmd.exe", "/c \"\"" + GitCommands.Settings.GitCmd + " \" log --all --pretty=short | \"" + GitCommands.Settings.GitDir + "git.cmd\" shortlog --all -s -n\"");
+			cmd.CmdStartProcess("sh", " \"\"" + GitCommands.Settings.GitCmd + " \" log --all --pretty=short | \"" + GitCommands.Settings.GitDir + "git.cmd\" shortlog --all -s -n\"");
             
            
         }

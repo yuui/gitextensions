@@ -1,6 +1,6 @@
 ﻿namespace GitUI
 {
-	partial class FindAndReplaceForm
+	/*partial class FindAndReplaceForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -11,6 +11,8 @@
 		/// Clean up any resources being used.
 		/// </summary>
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		
+		
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing && (components != null))
@@ -213,5 +215,5 @@
 		private System.Windows.Forms.Button btnHighlightAll;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnFindPrevious;
-	}
+	}*/
 }

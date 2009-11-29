@@ -32,7 +32,6 @@ UMM/UMM448/IActivaplanner.h
 *.orig
 _UpgradeReport_Files/
 _ReSharper.*/
-
 !/Bin/ICSharpCode.TextEditor.dll
 !/Bin/plink.exe
 !/Bin/pageant.exe

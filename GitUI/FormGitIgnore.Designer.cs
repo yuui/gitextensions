@@ -30,7 +30,7 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGitIgnore));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.GitIgnoreEdit = new ICSharpCode.TextEditor.TextEditorControl();
+			this.GitIgnoreEdit = new FileViewer();
 			this.AddDefault = new System.Windows.Forms.Button();
 			this.Save = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
 			// GitIgnoreEdit
 			// 
 			this.GitIgnoreEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.GitIgnoreEdit.IsReadOnly = false;
+			//this.GitIgnoreEdit.IsReadOnly = false;
 			this.GitIgnoreEdit.Location = new System.Drawing.Point(0, 0);
 			this.GitIgnoreEdit.Name = "GitIgnoreEdit";
 			this.GitIgnoreEdit.Size = new System.Drawing.Size(400, 473);
@@ -119,7 +119,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private ICSharpCode.TextEditor.TextEditorControl GitIgnoreEdit;
+        private FileViewer GitIgnoreEdit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Button AddDefault;

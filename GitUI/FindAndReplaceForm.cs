@@ -5,14 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using ICSharpCode.TextEditor.Document;
-using ICSharpCode.TextEditor;
+//using ICSharpCode.TextEditor.Document;
+//using ICSharpCode.TextEditor;
 using System.Diagnostics;
 using System.IO;
 
 namespace GitUI
 {
-	public partial class FindAndReplaceForm : Form
+/*	public partial class FindAndReplaceForm : Form
 	{
 		public FindAndReplaceForm()
 		{
@@ -497,5 +497,5 @@ namespace GitUI
                 (one.G + two.G) >> 1,
                 (one.B + two.B) >> 1);
         }
-    }
+    }*/
 }

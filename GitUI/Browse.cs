@@ -718,10 +718,6 @@ namespace GitUI
                 Initialize();
         }
 
-        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void cherryPickToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -740,10 +736,6 @@ namespace GitUI
             commitToolStripMenuItem_Click(sender, e);
         }
 
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
 
         private void Workingdir_Click_1(object sender, EventArgs e)
         {
@@ -909,16 +901,6 @@ namespace GitUI
                 Initialize();
         }
 
-        private void ToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripTextBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripLabel2_Click(object sender, EventArgs e)
         {
             if (RevisionGrid.Filter != RevisionGrid.FormatQuickFilter(toolStripTextBoxFilter.Text))
@@ -931,14 +913,6 @@ namespace GitUI
         private void toolStripTextBoxFilter_Leave(object sender, EventArgs e)
         {
             toolStripLabel2_Click(sender, e);
-        }
-
-        private void FormBrowse_Shown(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(GitCommands.Settings.WorkingDir))
-            {
-                //openToolStripMenuItem_Click(sender, e);
-            }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1056,11 +1030,6 @@ namespace GitUI
             }
         }
 
-        private void NoGit_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void manageSubmodulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (GitUICommands.Instance.StartSubmodulesDialog())
@@ -1159,11 +1128,6 @@ namespace GitUI
             Settings.WorkingDir = oldworkingdir;
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void toolStripSplitStash_ButtonClick(object sender, EventArgs e)
         {
             if (GitUICommands.Instance.StartStashDialog())
@@ -1229,11 +1193,6 @@ namespace GitUI
             Close();
         }
 
-        private void openSubmoduleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             recentToolStripMenuItem.DropDownItems.Clear();
@@ -1259,11 +1218,6 @@ namespace GitUI
 
             GitCommands.Settings.WorkingDir = button.Text;
             InternalInitialize(true);
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)

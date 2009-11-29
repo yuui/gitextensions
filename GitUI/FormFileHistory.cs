@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using GitCommands;
-using ICSharpCode.TextEditor.Document;
+//using ICSharpCode.TextEditor.Document;
 
 namespace GitUI
 {
@@ -26,6 +26,7 @@ namespace GitUI
             FileChanges.SelectionChanged +=new EventHandler(FileChanges_SelectionChanged);
             FileChanges.DisableContextMenu();
 
+			/*
             BlameFile.LineViewerStyle = ICSharpCode.TextEditor.Document.LineViewerStyle.FullRow;
 
             BlameCommitter.ActiveTextAreaControl.VScrollBar.Width = 0;
@@ -41,6 +42,7 @@ namespace GitUI
             BlameFile.ActiveTextAreaControl.TextArea.KeyDown += new KeyEventHandler(BlameFile_KeyUp);
             BlameFile.ActiveTextAreaControl.KeyDown += new KeyEventHandler(BlameFile_KeyUp);
             BlameFile.ActiveTextAreaControl.TextArea.DoubleClick += new EventHandler(ActiveTextAreaControl_DoubleClick);
+            */
         }
 
         public string FileName { get; set; }
@@ -125,18 +127,18 @@ namespace GitUI
                 blameFile.AppendLine(blame.Text);
             }
 
-            EditorOptions.SetSyntax(BlameFile, FileName);
+            //EditorOptions.SetSyntax(BlameFile, FileName);
 
             BlameCommitter.Text = blameCommitter.ToString();
             BlameFile.Text = blameFile.ToString();
         }
 
-        FindAndReplaceForm findAndReplaceForm = new FindAndReplaceForm();
+        //FindAndReplaceForm findAndReplaceForm = new FindAndReplaceForm();
 
         void BlameFile_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
-                findAndReplaceForm.ShowFor(BlameFile, false);
+            //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
+                //findAndReplaceForm.ShowFor(BlameFile, false);
             SyncBlameViews();
         }
 
@@ -153,18 +155,18 @@ namespace GitUI
         
         private void SyncBlameViews()
         {
-            BlameCommitter.ActiveTextAreaControl.VScrollBar.Value = BlameFile.ActiveTextAreaControl.VScrollBar.Value;
+            //BlameCommitter.ActiveTextAreaControl.VScrollBar.Value = BlameFile.ActiveTextAreaControl.VScrollBar.Value;
             //BlameCommitter.ActiveTextAreaControl.Caret.Line = BlameFile.ActiveTextAreaControl.Caret.Line;
         }
 
         void ActiveTextAreaControl_DoubleClick(object sender, EventArgs e)
         {
-            if (blameList == null || blameList.Count < BlameFile.ActiveTextAreaControl.TextArea.Caret.Line)
-                return;
+            //if (blameList == null || blameList.Count < BlameFile.ActiveTextAreaControl.TextArea.Caret.Line)
+            //    return;
 
-            FormDiffSmall frm = new FormDiffSmall();
-            frm.SetRevision(blameList[BlameFile.ActiveTextAreaControl.TextArea.Caret.Line].CommitGuid);
-            frm.ShowDialog();
+            //FormDiffSmall frm = new FormDiffSmall();
+            //frm.SetRevision(blameList[BlameFile.ActiveTextAreaControl.TextArea.Caret.Line].CommitGuid);
+            //frm.ShowDialog();
         }
 
 

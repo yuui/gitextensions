@@ -7,7 +7,7 @@ namespace GitUI
 {
     public class EditorOptions
     {
-        public static void SetSyntax(ICSharpCode.TextEditor.TextEditorControl editor, string fileName)
+/*        public static void SetSyntax(ICSharpCode.TextEditor.TextEditorControl editor, string fileName)
         {
             string syntax = "XML";
             if (fileName.LastIndexOf('.') > 0)
@@ -40,6 +40,6 @@ namespace GitUI
                 }
             }
             editor.SetHighlighting(syntax);
-        }
+        }*/
     }
 }
