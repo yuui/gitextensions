@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="10.00"
 	Name="SimpleExt"
 	ProjectGUID="{BBE7B8AD-D175-4679-A614-38BFF28B0269}"
 	RootNamespace="SimpleExt"

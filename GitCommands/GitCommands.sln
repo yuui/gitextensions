@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitExtensions", "GitExtensions\GitExtensions.csproj", "{F15A69AF-7EBD-4F69-A026-5071FA3EC61B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleExt", "..\SimpleExt\SimpleExt.vcproj", "{BBE7B8AD-D175-4679-A614-38BFF28B0269}"
