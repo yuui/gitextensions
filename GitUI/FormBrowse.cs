@@ -237,33 +237,33 @@ namespace GitUI
         private void InitToolStripBranchFilter(bool local, bool remote)
         {
             toolStripBranches.Items.Clear();
-            List<string> branches = GetBranchHeads(local, remote);
+            List<GitHead> branches = GetBranchHeads(local, remote);
             foreach (var branch in branches)
-                toolStripBranches.Items.Add(branch);
+                toolStripBranches.Items.Add(branch.Name);
         }
 
-        private static List<string> GetBranchHeads(bool local, bool remote)
+        private static List<GitHead> GetBranchHeads(bool local, bool remote)
         {
-            List<string> list = new List<string>();
+            List<GitHead> list = new List<GitHead>();
             if (local && remote)
             {
                 var branches = GitCommands.GitCommandHelpers.GetHeads(true, true);
                 foreach (var branch in branches)
                     if (!branch.IsTag)
-                        list.Add(branch.Name);
+                        list.Add(branch);
             }
             else if (local)
             {
                 var branches = GitCommands.GitCommandHelpers.GetHeads(false);
                 foreach (var branch in branches)
-                    list.Add(branch.Name);
+                    list.Add(branch);
             }
             else if (remote)
             {
                 var branches = GitCommands.GitCommandHelpers.GetHeads(true, true);
                 foreach (var branch in branches)
                     if (branch.IsRemote && !branch.IsTag)
-                        list.Add(branch.Name);
+                        list.Add(branch);
             }
             return list;
         }
@@ -911,8 +911,8 @@ namespace GitUI
             var index = toolStripBranches.Text.Length;
             var branches = GetBranchHeads(localToolStripMenuItem.Checked, remoteToolStripMenuItem.Checked);
             foreach (var branch in branches)
-                if (branch.Contains(filter))
-                    toolStripBranches.Items.Add(branch);
+                if (branch.Name.Contains(filter))
+                    toolStripBranches.Items.Add(branch.Name);
             toolStripBranches.SelectionStart = index;
         }
 
@@ -1506,6 +1506,49 @@ namespace GitUI
         private void toolStripBranches_Leave(object sender, EventArgs e)
         {
             ApplyBranchFilter();
+        }
+
+        private void branchFilterToolstripButton_DropDownOpening(object sender, EventArgs e)
+        {
+
+        }
+
+        private void branchFilterToolstripButton_Click(object sender, EventArgs e)
+        {
+            branchFilterToolstripButton.DropDownItems.Clear();
+
+            ToolStripMenuItem toolStripItemClear = new ToolStripMenuItem("Clear filter");
+            toolStripItemClear.Click += new EventHandler(toolStripItemClear_Click);
+            branchFilterToolstripButton.DropDownItems.Add(toolStripItemClear);
+            branchFilterToolstripButton.DropDownItems.Add(new ToolStripSeparator());
+
+            List<GitHead> branches = GetBranchHeads(true, true);
+            foreach (var branch in branches)
+            {
+                ToolStripMenuItem toolStripItem = new ToolStripMenuItem(branch.Name);
+                toolStripItem.CheckOnClick = true;
+                toolStripItem.Checked = RevisionGrid.BranchFilter.Contains(branch.Name);
+                toolStripItem.Tag = branch;
+                toolStripItem.Click += new EventHandler(toolStripItem_Click);
+
+                if (!branch.IsRemote)
+                    branchFilterToolstripButton.DropDownItems.Add(toolStripItem);
+            }
+
+            branchFilterToolstripButton.DropDown.Show();
+        }
+
+        void toolStripItemClear_Click(object sender, EventArgs e)
+        {
+            RevisionGrid.SetAndApplyBranchFilter(string.Empty);
+            RevisionGrid.ForceRefreshRevisions();
+        }
+
+        void toolStripItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem toolStripMenuItem = (ToolStripMenuItem)sender;
+            RevisionGrid.SetAndApplyBranchFilter(RevisionGrid.BranchFilter + " " + ((GitHead)toolStripMenuItem.Tag).Name);
+            RevisionGrid.ForceRefreshRevisions();
         }
     }
 }
