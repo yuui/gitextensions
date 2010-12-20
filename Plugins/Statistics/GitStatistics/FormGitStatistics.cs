@@ -151,7 +151,7 @@ namespace GitStatistics
         
         public void LoadLinesOfCode()
         {
-            string revision = gitUiCommands.GitCommands.RunGit("log -n1 --until=\"" + date.Value.ToString("YYYY-MM-DD") + "\" --pretty=format:%H");
+            string revision = gitUiCommands.GitCommands.RunGit("log -n1 --date-order --until=\"" + date.Value.ToString("MMM dd yyyy") + "\" --pretty=format:%H");
             lineCounter.FindAndAnalyzeCodeFiles(_codeFilePattern, revision, DirectoriesToIgnore);
         }
 
