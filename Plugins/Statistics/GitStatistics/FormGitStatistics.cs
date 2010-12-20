@@ -7,6 +7,7 @@ using GitCommands.Statistics;
 using GitStatistics.PieChart;
 using System.Threading;
 using System.Collections.Generic;
+using GitUIPluginInterfaces;
 
 namespace GitStatistics
 {
@@ -37,9 +38,11 @@ namespace GitStatistics
         private SynchronizationContext syncContext;
         private LineCounter lineCounter;
         private Thread loadThread;
+        private GitUIBaseEventArgs gitUiCommands;
 
-        public FormGitStatistics(string codeFilePattern)
+        public FormGitStatistics(GitUIBaseEventArgs gitUiCommands, string codeFilePattern)
         {
+            this.gitUiCommands = gitUiCommands;
             _codeFilePattern = codeFilePattern;
             InitializeComponent();
 
@@ -75,7 +78,7 @@ namespace GitStatistics
 
         private void CountCommits()
         {
-            var allCommitsByUser = CommitCounter.GroupAllCommitsByContributor();
+            var allCommitsByUser = CommitCounter.GroupAllCommitsByContributor(DateTime.MinValue, date.Value);
             syncContext.Post(o =>
             {
                 if (this.IsDisposed)
@@ -138,7 +141,7 @@ namespace GitStatistics
             
             initializeLinesOfCodeDone = true;
 
-            lineCounter = new LineCounter(WorkingDir);
+            lineCounter = new LineCounter(gitUiCommands);
             lineCounter.LinesOfCodeUpdated += new EventHandler(lineCounter_LinesOfCodeUpdated);
 
             loadThread = new Thread(new ThreadStart(LoadLinesOfCode));
@@ -148,7 +151,8 @@ namespace GitStatistics
         
         public void LoadLinesOfCode()
         {
-            lineCounter.FindAndAnalyzeCodeFiles(_codeFilePattern, DirectoriesToIgnore);
+            string revision = gitUiCommands.GitCommands.RunGit("log -n1 --until=\"" + date.Value.ToString("YYYY-MM-DD") + "\" --pretty=format:%H");
+            lineCounter.FindAndAnalyzeCodeFiles(_codeFilePattern, revision, DirectoriesToIgnore);
         }
 
         void lineCounter_LinesOfCodeUpdated(object sender, EventArgs e)
@@ -171,6 +175,8 @@ namespace GitStatistics
             //Sync rest to UI thread
             syncContext.Post((o) =>
             {
+                this.Text = string.Format("Statistics ({0} / {1})", lineCounter.NumberOfFilesProcessed, lineCounter.NumberOfFiles);
+
                 TotalLinesOfTestCode.Text = lineCounter.NumberTestCodeLines + " Lines of test code";
 
                 TestCodePie.SetValues(new Decimal[]
@@ -240,15 +246,27 @@ namespace GitStatistics
 
         private void FormGitStatistics_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Stop();
+        }
+
+        private void Stop()
+        {
             try
             {
                 if (loadThread != null)
                     loadThread.Abort();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void date_ValueChanged(object sender, EventArgs e)
+        {
+            Stop();
+            initializeLinesOfCodeDone = false;
+            Initialize();
         }
     }
 }

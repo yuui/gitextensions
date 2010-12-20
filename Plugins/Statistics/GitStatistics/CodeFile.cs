@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using GitUIPluginInterfaces;
+using System;
 
 namespace GitStatistics
 {
@@ -11,15 +13,19 @@ namespace GitStatistics
         protected int NumberCodeFiles;
         private bool _inCodeGeneratedRegion;
         private bool _inCommentBlock;
+        private GitUIBaseEventArgs gitUiCommands;
+        private string revision;
 
-        internal CodeFile(string fullName)
+        internal CodeFile(string fullName, string revision, GitUIBaseEventArgs gitUiCommands)
         {
-            File = new FileInfo(fullName);
+            File = fullName;
             _isDesignerFile = IsDesignerFile();
             IsTestFile = false;
+            this.gitUiCommands = gitUiCommands;
+            this.revision = revision;
         }
 
-        public FileInfo File { get; private set; }
+        public string File { get; private set; }
 
         protected internal int NumberLines { get; protected set; }
 
@@ -31,43 +37,39 @@ namespace GitStatistics
 
         internal bool IsTestFile { get; private set; }
 
+        public string Extension
+        {
+            get
+            {
+                int extensionIndex = File.LastIndexOf('.');
+                if (extensionIndex > 0)
+                    return File.Substring(extensionIndex);
+
+                return string.Empty;
+            }
+        }
 
         private bool IsDesignerFile()
         {
             return
                 IsWebReferenceFile() ||
-                File.Name.Contains(".Designer.") ||
-                File.Name.Contains(".designer.");
+                File.Contains(".Designer.") ||
+                File.Contains(".designer.");
         }
 
         private bool IsWebReferenceFile()
         {
-            return File.FullName.Contains(@"\Web References\") &&
-                   File.Name == "Reference.cs"; // Ugh
+            return File.Contains(@"\Web References\") &&
+                   File.Equals("Reference.cs"); // Ugh
         }
 
         public void CountLines()
         {
             InitializeCountLines();
-            if (!File.Exists)
-                return;
 
-            using (var sr = new StreamReader(File.FullName, true))
-            {
-                try
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        var line = sr.ReadLine();
-                        if (line != null)
-                            IncrementLineCountsFromLine(line.Trim());
-                    }
-                }
-                finally
-                {
-                    sr.Close();
-                }
-            }
+            string[] lines = gitUiCommands.GitCommands.RunGit(string.Format("show {0}:\"{1}\"", revision, File.Replace('\\', '/'))).Split(new char[] { '\0', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach(string line in lines)
+                IncrementLineCountsFromLine(line.Trim());
         }
 
         private void InitializeCountLines()

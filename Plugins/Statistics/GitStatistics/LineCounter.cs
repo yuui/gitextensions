@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using GitUIPluginInterfaces;
+using System.Text.RegularExpressions;
 
 namespace GitStatistics
 {
@@ -8,12 +10,12 @@ namespace GitStatistics
     {
         public event EventHandler LinesOfCodeUpdated;
 
-        private readonly DirectoryInfo _directory;
+        private GitUIBaseEventArgs gitUiCommands;
 
-        public LineCounter(DirectoryInfo directory)
+        public LineCounter(GitUIBaseEventArgs gitUiCommands)
         {
+            this.gitUiCommands = gitUiCommands;
             LinesOfCodePerExtension = new Dictionary<string, int>();
-            _directory = directory;
         }
 
         public int NumberCommentsLines { get; private set; }
@@ -22,6 +24,8 @@ namespace GitStatistics
         public int NumberTestCodeLines { get; private set; }
         public int NumberBlankLines { get; private set; }
         public int NumberCodeLines { get; private set; }
+        public int NumberOfFiles { get; private set; }
+        public int NumberOfFilesProcessed { get; private set; }
         public Dictionary<string, int> LinesOfCodePerExtension { get; private set; }
 
         private static bool DirectoryIsFiltered(FileSystemInfo dir, IEnumerable<string> directoryFilters)
@@ -34,7 +38,7 @@ namespace GitStatistics
             return false;
         }
 
-        public void FindAndAnalyzeCodeFiles(string filePattern, string directoriesToIgnore)
+        public void FindAndAnalyzeCodeFiles(string filePattern, string revision, string directoriesToIgnore)
         {
             NumberLines = 0;
             NumberBlankLines = 0;
@@ -42,31 +46,40 @@ namespace GitStatistics
             NumberCommentsLines = 0;
             NumberCodeLines = 0;
             NumberTestCodeLines = 0;
+            NumberOfFilesProcessed = 0;
+            NumberOfFiles = 1;
 
             var filters = filePattern.Split(';');
             var directoryFilter = directoriesToIgnore.Split(';');
             var lastUpdate = DateTime.Now;
             var timer = new TimeSpan(0,0,0,0,500);
 
+            string [] files = gitUiCommands.GitCommands.RunGit("ls-tree --full-tree --name-only -r " + revision).Split(new char[] { '\0', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string [] extensions = filePattern.Split(',');
+
+            NumberOfFiles = files.Length;
+
             var codeFiles = new List<CodeFile>();
-            foreach (var filter in filters)
+
+            foreach (var file in files)
             {
-                foreach (var file in _directory.GetFiles(filter.Trim(), SearchOption.AllDirectories))
+                NumberOfFilesProcessed++;
+
+                if (!HasMatchingExtension(extensions, file))
+                    continue;
+                //if (DirectoryIsFiltered(file.Directory, directoryFilter))
+                //    continue;
+
+                var codeFile = new CodeFile(file, revision, gitUiCommands);
+                codeFile.CountLines();
+                codeFiles.Add(codeFile);
+
+                CalculateSums(codeFile);
+
+                if (LinesOfCodeUpdated != null && DateTime.Now - lastUpdate > timer)
                 {
-                    if (DirectoryIsFiltered(file.Directory, directoryFilter))
-                        continue;
-
-                    var codeFile = new CodeFile(file.FullName);
-                    codeFile.CountLines();
-                    codeFiles.Add(codeFile);
-
-                    CalculateSums(codeFile);
-
-                    if (LinesOfCodeUpdated != null && DateTime.Now - lastUpdate > timer)
-                    {
-                        lastUpdate = DateTime.Now;
-                        LinesOfCodeUpdated(this, EventArgs.Empty);
-                    }
+                    lastUpdate = DateTime.Now;
+                    LinesOfCodeUpdated(this, EventArgs.Empty);
                 }
             }
 
@@ -74,6 +87,20 @@ namespace GitStatistics
             if (LinesOfCodeUpdated != null)
                 LinesOfCodeUpdated(this, EventArgs.Empty);
         }
+
+        private static bool HasMatchingExtension(IEnumerable<string> extensions, string fileName)
+        {
+            foreach (string extension in extensions)
+            {
+                if (fileName.EndsWith("." + extension.Trim(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
 
         private void CalculateSums(CodeFile codeFile)
         {
@@ -88,7 +115,7 @@ namespace GitStatistics
                 codeFile.NumberCommentsLines -
                 codeFile.NumberLinesInDesignerFiles;
 
-            var extension = codeFile.File.Extension.ToLower();
+            var extension = codeFile.Extension.ToLower();
 
             if (!LinesOfCodePerExtension.ContainsKey(extension))
                 LinesOfCodePerExtension.Add(extension, 0);

@@ -13,7 +13,7 @@ namespace GitCommands.Statistics
         public static Tuple<Dictionary<string, int>, int> GroupAllCommitsByContributor(DateTime since, DateTime until)
         {
             var sinceParam = since != DateTime.MinValue ? GetDateParameter(since, "since") : "";
-            var untilParam = until != DateTime.MaxValue ? GetDateParameter(since, "until") : "";
+            var untilParam = until != DateTime.MaxValue ? GetDateParameter(until, "until") : "";
 
             var unformattedCommitsPerContributor =
                 GitCommandHelpers

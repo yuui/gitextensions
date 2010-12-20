@@ -264,24 +264,30 @@ namespace GitStatistics.PieChart
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
-            if (_pieChart == null)
-                return;
+            try
+            {
+                base.OnMouseMove(e);
+                if (_pieChart == null)
+                    return;
 
-            var index = _pieChart.FindPieSliceUnderPoint(new PointF(e.X, e.Y));
-            if (index != -1)
-            {
-                if (ToolTips == null || ToolTips.Length <= index || ToolTips[index].Length == 0)
-                    _toolTip.SetToolTip(this, _values[index].ToString());
+                var index = _pieChart.FindPieSliceUnderPoint(new PointF(e.X, e.Y));
+                if (index != -1)
+                {
+                    if (ToolTips == null || ToolTips.Length <= index || ToolTips[index].Length == 0)
+                        _toolTip.SetToolTip(this, _values[index].ToString());
+                    else
+                        _toolTip.SetToolTip(this, ToolTips[index]);
+                }
                 else
-                    _toolTip.SetToolTip(this, ToolTips[index]);
+                {
+                    _toolTip.RemoveAll();
+                }
+                _highlightedIndex = index;
+                Refresh();
             }
-            else
+            catch
             {
-                _toolTip.RemoveAll();
             }
-            _highlightedIndex = index;
-            Refresh();
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
