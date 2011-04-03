@@ -33,7 +33,7 @@ namespace GitUI.SpellChecker
             this.SpellCheckContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.SpellCheckTimer = new System.Windows.Forms.Timer(this.components);
-            this.TextBox = new System.Windows.Forms.RichTextBox();
+            this.TextBox = new System.Windows.Forms.TextBox();
             this.EmptyLabel = new System.Windows.Forms.Label();
             this.SpellCheckContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -58,20 +58,21 @@ namespace GitUI.SpellChecker
             // 
             // TextBox
             // 
+            this.TextBox.AcceptsReturn = true;
             this.TextBox.AcceptsTab = true;
             this.TextBox.ContextMenuStrip = this.SpellCheckContextMenu;
             this.TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextBox.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
             this.TextBox.Location = new System.Drawing.Point(0, 0);
+            this.TextBox.Multiline = true;
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(386, 336);
+            this.TextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TextBox.Size = new System.Drawing.Size(331, 291);
             this.TextBox.TabIndex = 1;
-            this.TextBox.Text = "";
-            this.TextBox.SizeChanged += new System.EventHandler(this.TextBoxSizeChanged);
             this.TextBox.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             this.TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
-            this.TextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyUp);
             this.TextBox.Leave += new System.EventHandler(this.TextBoxLeave);
+            this.TextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyUp);
+            this.TextBox.SizeChanged += new System.EventHandler(this.TextBoxSizeChanged);
             // 
             // EmptyLabel
             // 
@@ -80,22 +81,23 @@ namespace GitUI.SpellChecker
             this.EmptyLabel.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.EmptyLabel.Location = new System.Drawing.Point(3, 3);
             this.EmptyLabel.Name = "EmptyLabel";
-            this.EmptyLabel.Size = new System.Drawing.Size(117, 27);
+            this.EmptyLabel.Size = new System.Drawing.Size(100, 23);
             this.EmptyLabel.TabIndex = 2;
             this.EmptyLabel.Text = "Enter message";
             this.EmptyLabel.Click += new System.EventHandler(this.EmptyLabelClick);
             // 
             // EditNetSpell
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.EmptyLabel);
             this.Controls.Add(this.TextBox);
             this.Name = "EditNetSpell";
-            this.Size = new System.Drawing.Size(386, 336);
+            this.Size = new System.Drawing.Size(331, 291);
             this.Load += new System.EventHandler(this.EditNetSpellLoad);
             this.SpellCheckContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,7 +106,7 @@ namespace GitUI.SpellChecker
         private System.Windows.Forms.ContextMenuStrip SpellCheckContextMenu;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Timer SpellCheckTimer;
-        private System.Windows.Forms.RichTextBox TextBox;
+        private System.Windows.Forms.TextBox TextBox;
         private System.Windows.Forms.Label EmptyLabel;
     }
 }

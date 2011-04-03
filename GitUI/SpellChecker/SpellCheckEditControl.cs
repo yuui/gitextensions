@@ -10,7 +10,7 @@ namespace GitUI.SpellChecker
 {
     public class SpellCheckEditControl : NativeWindow
     {
-        private readonly RichTextBox _richTextBox;
+        private readonly TextBox _richTextBox;
         public List<TextPos> IllFormedLines = new List<TextPos>();
         public List<TextPos> Lines = new List<TextPos>();
         private Bitmap _bitmap;
@@ -18,7 +18,7 @@ namespace GitUI.SpellChecker
         private int _lineHeight;
         private Graphics _textBoxGraphics;
 
-        public SpellCheckEditControl(RichTextBox richTextBox)
+        public SpellCheckEditControl(TextBox richTextBox)
         {
             _richTextBox = richTextBox;
             // Start receiving messages (make sure you call ReleaseHandle on Dispose):   
@@ -97,8 +97,9 @@ namespace GitUI.SpellChecker
         {
             foreach (var textPos in list)
             {
-                var start = _richTextBox.GetPositionFromCharIndex(textPos.Start);
-                var end = _richTextBox.GetPositionFromCharIndex(textPos.End);
+                Point start = _richTextBox.GetPositionFromCharIndex(textPos.Start);
+                Point end = _richTextBox.GetPositionFromCharIndex(textPos.End - 1);
+                end.X += 5;
 
                 // The position above now points to the top left corner of the character.   
                 // We need to account for the character height so the underlines go   
@@ -149,7 +150,7 @@ namespace GitUI.SpellChecker
                     pl.Add(new Point(i, start.Y));
                     pl.Add(new Point(i + 2, start.Y + 2));
                 }
-                var p = (Point[]) pl.ToArray(typeof (Point));
+                var p = (Point[])pl.ToArray(typeof(Point));
                 _bufferGraphics.DrawLines(pen, p);
             }
             else
@@ -163,8 +164,8 @@ namespace GitUI.SpellChecker
             var col = Color.FromArgb(120, 255, 255, 0);
             var linHeight = LineHeight();
             var pen = new Pen(col, linHeight);
-            start.Offset(0, -linHeight/2);
-            end.Offset(0, -linHeight/2);
+            start.Offset(0, -linHeight / 2);
+            end.Offset(0, -linHeight / 2);
             _bufferGraphics.DrawLine(pen, start, end);
         }
 
