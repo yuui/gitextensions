@@ -147,9 +147,9 @@ namespace GitCommands
 
             var message = new StringBuilder();
             foreach (var line in lines)
-                message.AppendFormat("{0}\n", line);
+                message.AppendFormat("{0}{1}", line, Environment.NewLine);
 
-            var body = "\n\n" + message.ToString().TrimStart().TrimEnd() + "\n\n";
+            var body = Environment.NewLine + Environment.NewLine + message.ToString().TrimStart().TrimEnd() + Environment.NewLine + Environment.NewLine;
 
             //We need to recode the commit message because of a bug in Git.
             //We cannot let git recode the message to Settings.Encoding which is
@@ -158,10 +158,10 @@ namespace GitCommands
             if (logoutputEncoding != Settings.Encoding)
                 body = logoutputEncoding.GetString(Settings.Encoding.GetBytes(body));
 
-            var header = FillToLenght(Strings.GetAuthorText() + ":", COMMITHEADER_STRING_LENGTH) + author + "\n" +
-                         FillToLenght(Strings.GetAuthorDateText() + ":", COMMITHEADER_STRING_LENGTH) + GitCommandHelpers.GetRelativeDateString(DateTime.UtcNow, authorDate.UtcDateTime) + " (" + authorDate.LocalDateTime.ToString("ddd MMM dd HH':'mm':'ss yyyy") + ")\n" +
-                         FillToLenght(Strings.GetCommitterText() + ":", COMMITHEADER_STRING_LENGTH) + committer + "\n" +
-                         FillToLenght(Strings.GetCommitterDateText() + ":", COMMITHEADER_STRING_LENGTH) + GitCommandHelpers.GetRelativeDateString(DateTime.UtcNow, commitDate.UtcDateTime) + " (" + commitDate.LocalDateTime.ToString("ddd MMM dd HH':'mm':'ss yyyy") + ")\n" +
+            var header = FillToLenght(Strings.GetAuthorText() + ":", COMMITHEADER_STRING_LENGTH) + author + Environment.NewLine +
+                         FillToLenght(Strings.GetAuthorDateText() + ":", COMMITHEADER_STRING_LENGTH) + GitCommandHelpers.GetRelativeDateString(DateTime.UtcNow, authorDate.UtcDateTime) + " (" + authorDate.LocalDateTime.ToString("ddd MMM dd HH':'mm':'ss yyyy") + ")" + Environment.NewLine +
+                         FillToLenght(Strings.GetCommitterText() + ":", COMMITHEADER_STRING_LENGTH) + committer + Environment.NewLine +
+                         FillToLenght(Strings.GetCommitterDateText() + ":", COMMITHEADER_STRING_LENGTH) + GitCommandHelpers.GetRelativeDateString(DateTime.UtcNow, commitDate.UtcDateTime) + " (" + commitDate.LocalDateTime.ToString("ddd MMM dd HH':'mm':'ss yyyy") + ")" + Environment.NewLine +
                          FillToLenght(Strings.GetCommitHashText() + ":", COMMITHEADER_STRING_LENGTH) + guid;
 
             header = RemoveRedundancies(header);

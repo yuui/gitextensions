@@ -33,7 +33,7 @@ namespace GitUI
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.MailBody = new System.Windows.Forms.RichTextBox();
+            this.MailBody = new System.Windows.Forms.TextBox();
             this.MailSubject = new System.Windows.Forms.TextBox();
             this.MailAddress = new System.Windows.Forms.ComboBox();
             this.SendToMail = new System.Windows.Forms.RadioButton();
@@ -106,12 +106,13 @@ namespace GitUI
             // 
             this.MailBody.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.MailBody.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
             this.MailBody.Location = new System.Drawing.Point(254, 93);
             this.MailBody.Name = "MailBody";
             this.MailBody.Size = new System.Drawing.Size(477, 56);
             this.MailBody.TabIndex = 13;
             this.MailBody.Text = "";
+            this.MailBody.ScrollBars = ScrollBars.Vertical;
+            this.MailBody.Multiline = true;
             // 
             // MailSubject
             // 
@@ -297,7 +298,7 @@ namespace GitUI
         private System.Windows.Forms.RadioButton SaveToDir;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox MailBody;
+        private System.Windows.Forms.TextBox MailBody;
         private System.Windows.Forms.TextBox MailSubject;
     }
 }

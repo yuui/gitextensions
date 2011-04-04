@@ -40,7 +40,7 @@ namespace GitUI
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.Stashes = new System.Windows.Forms.ToolStripComboBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.StashMessage = new System.Windows.Forms.RichTextBox();
+            this.StashMessage = new System.Windows.Forms.TextBox();
             this.Loading = new System.Windows.Forms.PictureBox();
             this.Stashed = new GitUI.FileStatusList();
             this.View = new GitUI.Editor.FileViewer();
@@ -181,6 +181,8 @@ namespace GitUI
             this.StashMessage.Size = new System.Drawing.Size(251, 45);
             this.StashMessage.TabIndex = 3;
             this.StashMessage.Text = "";
+            this.StashMessage.ScrollBars = ScrollBars.Vertical;
+            this.StashMessage.Multiline = true;
             // 
             // Loading
             // 
@@ -307,7 +309,7 @@ namespace GitUI
         private System.Windows.Forms.SplitContainer splitContainer5;
         private FileStatusList Stashed;
         private System.Windows.Forms.BindingSource gitStashBindingSource;
-        private System.Windows.Forms.RichTextBox StashMessage;
+        private System.Windows.Forms.TextBox StashMessage;
         private FileViewer View;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;

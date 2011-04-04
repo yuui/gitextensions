@@ -33,7 +33,7 @@ namespace GitUI
             this.tableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.gravatar1 = new GitUI.GravatarControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this._RevisionHeader = new System.Windows.Forms.RichTextBox();
+            this._RevisionHeader = new System.Windows.Forms.TextBox();
             this.commitInfoContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyCommitInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -109,7 +109,6 @@ namespace GitUI
             this._RevisionHeader.ContextMenuStrip = this.commitInfoContextMenuStrip;
             this._RevisionHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this._RevisionHeader.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this._RevisionHeader.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
             this._RevisionHeader.Location = new System.Drawing.Point(0, 0);
             this._RevisionHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._RevisionHeader.Name = "_RevisionHeader";
@@ -117,6 +116,8 @@ namespace GitUI
             this._RevisionHeader.Size = new System.Drawing.Size(670, 115);
             this._RevisionHeader.TabIndex = 0;
             this._RevisionHeader.Text = "";
+            this._RevisionHeader.ScrollBars = ScrollBars.Vertical;
+            this._RevisionHeader.Multiline = true; 
             // 
             // commitInfoContextMenuStrip
             // 
@@ -178,7 +179,7 @@ namespace GitUI
             this.RevisionInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RevisionInfo.ContextMenuStrip = this.commitInfoContextMenuStrip;
             this.RevisionInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RevisionInfo.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.RevisionInfo.LanguageOption = RichTextBoxLanguageOptions.UIFonts;
             this.RevisionInfo.Location = new System.Drawing.Point(0, 0);
             this.RevisionInfo.Margin = new System.Windows.Forms.Padding(4);
             this.RevisionInfo.Name = "RevisionInfo";
@@ -224,7 +225,7 @@ namespace GitUI
         private System.Windows.Forms.ToolStripMenuItem showContainedInBranchesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showContainedInTagsToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.RichTextBox _RevisionHeader;
+        private System.Windows.Forms.TextBox _RevisionHeader;
         private System.Windows.Forms.ToolStripMenuItem copyCommitInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem showContainedInBranchesRemoteToolStripMenuItem;

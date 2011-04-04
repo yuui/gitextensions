@@ -33,11 +33,11 @@ namespace GitUI
             this.tabPageCommandLog = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.LogItems = new System.Windows.Forms.ListBox();
-            this.LogOutput = new System.Windows.Forms.RichTextBox();
+            this.LogOutput = new System.Windows.Forms.TextBox();
             this.tabPageCommandCache = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.CommandCacheItems = new System.Windows.Forms.ListBox();
-            this.commandCacheOutput = new System.Windows.Forms.RichTextBox();
+            this.commandCacheOutput = new System.Windows.Forms.TextBox();
             this.TabControl.SuspendLayout();
             this.tabPageCommandLog.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -107,7 +107,8 @@ namespace GitUI
             this.LogOutput.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LogOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LogOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LogOutput.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.LogOutput.ScrollBars = ScrollBars.Vertical;
+            this.LogOutput.Multiline = true;
             this.LogOutput.Location = new System.Drawing.Point(0, 0);
             this.LogOutput.Margin = new System.Windows.Forms.Padding(0);
             this.LogOutput.Name = "LogOutput";
@@ -160,7 +161,8 @@ namespace GitUI
             this.commandCacheOutput.BackColor = System.Drawing.SystemColors.ControlLight;
             this.commandCacheOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.commandCacheOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.commandCacheOutput.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.commandCacheOutput.ScrollBars = ScrollBars.Vertical;
+            this.commandCacheOutput.Multiline = true;
             this.commandCacheOutput.Location = new System.Drawing.Point(0, 0);
             this.commandCacheOutput.Margin = new System.Windows.Forms.Padding(0);
             this.commandCacheOutput.Name = "commandCacheOutput";
@@ -197,10 +199,10 @@ namespace GitUI
         private System.Windows.Forms.TabPage tabPageCommandLog;
         private System.Windows.Forms.TabPage tabPageCommandCache;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.RichTextBox commandCacheOutput;
+        private System.Windows.Forms.TextBox commandCacheOutput;
         private System.Windows.Forms.ListBox CommandCacheItems;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ListBox LogItems;
-        private System.Windows.Forms.RichTextBox LogOutput;
+        private System.Windows.Forms.TextBox LogOutput;
     }
 }

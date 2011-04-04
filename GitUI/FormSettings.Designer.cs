@@ -240,7 +240,7 @@ namespace GitUI
             this.browseScriptButton = new System.Windows.Forms.Button();
             this.cancelScriptButton = new System.Windows.Forms.Button();
             this.saveScriptButton = new System.Windows.Forms.Button();
-            this.argumentsTextBox = new System.Windows.Forms.RichTextBox();
+            this.argumentsTextBox = new System.Windows.Forms.TextBox();
             this.commandTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.moveDownButton = new System.Windows.Forms.Button();
@@ -2750,6 +2750,8 @@ namespace GitUI
             this.argumentsTextBox.Size = new System.Drawing.Size(620, 51);
             this.argumentsTextBox.TabIndex = 8;
             this.argumentsTextBox.Text = "";
+            this.argumentsTextBox.ScrollBars = ScrollBars.Vertical;
+            this.argumentsTextBox.Multiline = true;
             this.argumentsTextBox.Enter += new System.EventHandler(this.argumentsTextBox_Enter);
             this.argumentsTextBox.Leave += new System.EventHandler(this.argumentsTextBox_Leave);
             // 
@@ -3185,7 +3187,7 @@ namespace GitUI
         private System.Windows.Forms.Button browseScriptButton;
         private System.Windows.Forms.Button cancelScriptButton;
         private System.Windows.Forms.Button saveScriptButton;
-        private System.Windows.Forms.RichTextBox argumentsTextBox;
+        private System.Windows.Forms.TextBox argumentsTextBox;
         private System.Windows.Forms.TextBox commandTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Button moveDownButton;

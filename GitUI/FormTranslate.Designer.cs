@@ -55,8 +55,8 @@ namespace GitUI
             this.translateItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.neutralTekst = new System.Windows.Forms.RichTextBox();
-            this.translatedText = new System.Windows.Forms.RichTextBox();
+            this.neutralTekst = new System.Windows.Forms.TextBox();
+            this.translatedText = new System.Windows.Forms.TextBox();
             this.googleAll = new System.Windows.Forms.Button();
             this.googleTranslate = new System.Windows.Forms.Button();
             this.previousButton = new System.Windows.Forms.Button();
@@ -356,7 +356,8 @@ namespace GitUI
             // neutralTekst
             // 
             this.neutralTekst.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.neutralTekst.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.neutralTekst.ScrollBars = ScrollBars.Vertical;
+            this.neutralTekst.Multiline = true;
             this.neutralTekst.Location = new System.Drawing.Point(0, 0);
             this.neutralTekst.Name = "neutralTekst";
             this.neutralTekst.ReadOnly = true;
@@ -367,7 +368,8 @@ namespace GitUI
             // translatedText
             // 
             this.translatedText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.translatedText.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.translatedText.ScrollBars = ScrollBars.Vertical;
+            this.translatedText.Multiline = true;
             this.translatedText.Location = new System.Drawing.Point(0, 0);
             this.translatedText.Name = "translatedText";
             this.translatedText.Size = new System.Drawing.Size(388, 77);
@@ -460,8 +462,8 @@ namespace GitUI
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.RichTextBox neutralTekst;
-        private System.Windows.Forms.RichTextBox translatedText;
+        private System.Windows.Forms.TextBox neutralTekst;
+        private System.Windows.Forms.TextBox translatedText;
         private System.Windows.Forms.ToolStripButton _toolStripButton1;
         private System.Windows.Forms.Button previousButton;
         private System.Windows.Forms.Button nextButton;

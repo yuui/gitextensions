@@ -32,7 +32,7 @@ namespace GitUI
             this.Ok = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.Output = new System.Windows.Forms.RichTextBox();
+            this.Output = new System.Windows.Forms.TextBox();
             this.SuccessImage = new System.Windows.Forms.PictureBox();
             this.ErrorImage = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -116,7 +116,8 @@ namespace GitUI
             this.Output.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Output.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Output.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Output.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.Output.ScrollBars = ScrollBars.Vertical;
+            this.Output.Multiline = true;
             this.Output.Location = new System.Drawing.Point(0, 0);
             this.Output.Name = "Output";
             this.Output.ReadOnly = true;
@@ -272,7 +273,7 @@ namespace GitUI
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ProgressBar ProgressBar;
-        private System.Windows.Forms.RichTextBox Output;
+        private System.Windows.Forms.TextBox Output;
         private System.Windows.Forms.PictureBox ErrorImage;
         private System.Windows.Forms.PictureBox SuccessImage;
         private System.Windows.Forms.SplitContainer splitContainer3;

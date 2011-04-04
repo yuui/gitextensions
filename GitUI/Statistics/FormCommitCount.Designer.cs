@@ -30,7 +30,7 @@ namespace GitUI.Statistics
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCommitCount));
-            this.CommitCount = new System.Windows.Forms.RichTextBox();
+            this.CommitCount = new System.Windows.Forms.TextBox();
             this.Loading = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             this.SuspendLayout();
@@ -38,7 +38,8 @@ namespace GitUI.Statistics
             // CommitCount
             // 
             this.CommitCount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommitCount.LanguageOption = RichTextBoxLanguageOptions.AutoKeyboard;
+            this.CommitCount.ScrollBars = ScrollBars.Vertical;
+            this.CommitCount.Multiline = true;
             this.CommitCount.Location = new System.Drawing.Point(0, 0);
             this.CommitCount.Name = "CommitCount";
             this.CommitCount.ReadOnly = true;
@@ -78,7 +79,7 @@ namespace GitUI.Statistics
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox CommitCount;
+        private System.Windows.Forms.TextBox CommitCount;
         private System.Windows.Forms.PictureBox Loading;
     }
 }
