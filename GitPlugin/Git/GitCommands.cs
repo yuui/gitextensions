@@ -7,7 +7,7 @@ using Microsoft.Win32;
 
 namespace GitPlugin.Git
 {
-    public static class GitCommands
+    public static class GitPluginCommands
     {
         public static void RunGitEx(string command, string filename)
         {
@@ -41,7 +41,7 @@ namespace GitPlugin.Git
                 if (!string.IsNullOrEmpty(fileName))
                 {
                     string head;
-                    string headFileName = GitCommands.FindGitWorkingDir(fileName) + ".git\\HEAD";
+                    string headFileName = GitPluginCommands.FindGitWorkingDir(fileName) + ".git\\HEAD";
                     if (File.Exists(headFileName))
                     {
                         head = File.ReadAllText(headFileName);
@@ -51,7 +51,7 @@ namespace GitPlugin.Git
                     else
                     {
                         int exitCode;
-                        head = GitCommands.RunGit("symbolic-ref HEAD", new FileInfo(fileName).DirectoryName, out exitCode);
+                        head = GitPluginCommands.RunGit("symbolic-ref HEAD", new FileInfo(fileName).DirectoryName, out exitCode);
                         if (exitCode == 1)
                             head = "no branch";
                     }
