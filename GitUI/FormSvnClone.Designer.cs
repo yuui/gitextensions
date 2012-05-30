@@ -193,6 +193,5 @@
         private System.Windows.Forms.TextBox _NO_TRANSLATE_authorsFileTextBox;
         private System.Windows.Forms.Button authorsFileBrowseButton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

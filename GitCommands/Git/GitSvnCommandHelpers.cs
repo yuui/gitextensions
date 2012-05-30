@@ -17,16 +17,12 @@
     {
         private const string SvnPrefix = "svn";
 
-        public static string CloneCmd(string fromSvn, string toPath, string authorsFile, bool followStandardLayout)
+        public static string CloneCmd(string fromSvn, string toPath, string authorsFile)
         {
             toPath = GitCommandHelpers.FixPath(toPath);
             StringBuilder sb = new StringBuilder();
             sb.Append(SvnPrefix);
             sb.Append(" clone ");
-            if (followStandardLayout)
-            {
-                sb.Append("-s ");
-            }
             sb.AppendFormat("\"{0}\"", fromSvn.Trim());
             sb.Append(' ');
             sb.AppendFormat("\"{0}\"", toPath.Trim());
