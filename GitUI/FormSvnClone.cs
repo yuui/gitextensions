@@ -56,8 +56,9 @@ namespace GitUI
                 {
                     authorsfile = null;
                 }
+                bool followStandardLayout = checkBox1.Checked;
                 var fromProcess = new FormProcess(
-                    Settings.GitCommand, GitSvnCommandHelpers.CloneCmd(this._NO_TRANSLATE_svnRepositoryComboBox.Text, dirTo, authorsfile));
+                    Settings.GitCommand, GitSvnCommandHelpers.CloneCmd(this._NO_TRANSLATE_svnRepositoryComboBox.Text, dirTo, authorsfile, followStandardLayout));
                 
                 fromProcess.ShowDialog(this);
 
