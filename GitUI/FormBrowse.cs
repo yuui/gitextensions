@@ -1663,13 +1663,15 @@ namespace GitUI
             if (!item.IsBlob)
                 return;
 
+            var fullName = Settings.WorkingDir + item.FileName;
             var fileDialog =
                 new SaveFileDialog
                     {
-                        FileName = Settings.WorkingDir + item.FileName,
+                        InitialDirectory = Path.GetDirectoryName(fullName),
+                        FileName = Path.GetFileName(fullName),
+                        DefaultExt = GitCommandHelpers.GetFileExtension(fullName),
                         AddExtension = true
                     };
-            fileDialog.DefaultExt = GitCommandHelpers.GetFileExtension(fileDialog.FileName);
             fileDialog.Filter =
                 _saveFileFilterCurrentFormat.Text + " (*." +
                 GitCommandHelpers.GetFileExtension(fileDialog.FileName) + ")|*." +
@@ -1773,18 +1775,19 @@ namespace GitUI
 
             GitItemStatus item = DiffFiles.SelectedItem;
 
+            var fullName = Settings.WorkingDir + item.Name;
             var fileDialog =
                 new SaveFileDialog
                 {
-                    InitialDirectory = Settings.WorkingDir,
-                    FileName = item.Name.Replace(Settings.PathSeparatorWrong, Settings.PathSeparator),
+                    InitialDirectory = Path.GetDirectoryName(fullName),
+                    FileName = Path.GetFileName(fullName),
+                    DefaultExt = GitCommandHelpers.GetFileExtension(fullName),
                     AddExtension = true
                 };
-            fileDialog.DefaultExt = GitCommandHelpers.GetFileExtension(fileDialog.FileName);
             fileDialog.Filter =
                 _saveFileFilterCurrentFormat.Text + " (*." +
-                GitCommandHelpers.GetFileExtension(fileDialog.FileName) + ")|*." +
-                GitCommandHelpers.GetFileExtension(fileDialog.FileName) +
+                fileDialog.DefaultExt + ")|*." +
+                fileDialog.DefaultExt +
                 "|" + _saveFileFilterAllFiles.Text + " (*.*)|*.*";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
